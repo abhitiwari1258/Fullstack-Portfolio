@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import Layout from "../components/Layout";
-import { getProjects } from "../services/ProjectApi";
+import { getProjects } from '../services/ProjectApi'
 import Loading from "../components/Loading";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await getProjects();
-        setProjects(res.data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProjects = async () => {
+    try {
+      const res = await getProjects();
+      setProjects(res.data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchData();
-  }, []);
+  useEffect(()=>{
+    fetchProjects()
+  },[])
 
   if (loading) {
     return <Loading/>
@@ -37,8 +37,12 @@ const Projects = () => {
           {projects.map((proj) => (
             <ProjectCard
               key={proj._id}
+              _id={proj._id}
               title={proj.title}
               description={proj.description}
+              githubLink={proj.githubLink}
+              liveLink={proj.liveLink}
+              refresh={fetchProjects}
             />
           ))}
         </div>

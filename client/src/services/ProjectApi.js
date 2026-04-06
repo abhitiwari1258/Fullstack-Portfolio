@@ -5,6 +5,9 @@ const API = axios.create({
 })
 
 export const getProjects = ()=> API.get("/projects")
-export const createProject  = ()=> API.post("/projects",data)
-export const updateProject  = ()=> API.put(`/projects/${id}`, data)
-export const deleteProject  = ()=> API.delete(`/projects/${id}`)
+export const createProject  = (data)=> {
+    console.log(data);
+    return API.post("/projects",data)
+}
+export const updateProject  = (id,data)=> API.put(`/projects/${id}`, data)
+export const deleteProject  = (id)=> API.delete(`/projects/${id}`)
