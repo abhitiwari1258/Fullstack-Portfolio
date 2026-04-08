@@ -8,6 +8,7 @@ const ProjectCard = ({
   githubLink,
   liveLink,
   refresh,
+  showDelete = true,
   image,
   tech = [],
 }) => {
@@ -82,12 +83,14 @@ const ProjectCard = ({
           </a>
 
           {/* Delete button */}
+
+          {showDelete && (
           <button
             onClick={handleDelete}
             className="ml-auto text-red-500 text-sm opacity-0 group-hover:opacity-100 transition"
           >
             Delete
-          </button>
+          </button>)}
         </div>
       </div>
     </motion.div>

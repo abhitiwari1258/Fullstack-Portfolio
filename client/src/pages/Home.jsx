@@ -111,6 +111,7 @@ const Home = () => {
                 githubLink={proj.githubLink}
                 liveLink={proj.liveLink}
                 refresh={fetchProjects}
+                showDelete={false}
                 image={proj.image}
                 tech={proj.tech}
               />
