@@ -88,7 +88,7 @@ const Home = () => {
         </div>
       </section>
 
-     
+      
 
       {/* 🔹 FEATURED PROJECTS */}
       <section className="mt-16">
@@ -111,6 +111,8 @@ const Home = () => {
                 githubLink={proj.githubLink}
                 liveLink={proj.liveLink}
                 refresh={fetchProjects}
+                image={proj.image}
+                tech={proj.tech}
               />
             ))}
           </div>

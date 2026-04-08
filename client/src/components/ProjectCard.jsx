@@ -8,6 +8,8 @@ const ProjectCard = ({
   githubLink,
   liveLink,
   refresh,
+  image,
+  tech = [],
 }) => {
   const handleDelete = async () => {
     try {
@@ -23,42 +25,70 @@ const ProjectCard = ({
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      whileHover={{ scale: 1.03 }}
-      className="group bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-xl transition flex flex-col justify-between"
+      whileHover={{ y: -6 }}
+      className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col h-full"
     >
-      <h2 className="text-lg font-semibold text-gray-800 mb-2">
-        {title}
-      </h2>
+      {/* Image */}
+      <div className="h-40 w-full overflow-hidden">
+        <img
+          src={image || "https://source.unsplash.com/400x200/?website"}
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+        />
+      </div>
 
-      <p className="text-gray-600 text-sm mb-5 line-clamp-3">
-        {description}
-      </p>
+      {/* Content */}
+      <div className="p-5 flex flex-col flex-grow">
+        {/* Title */}
+        <h2 className="text-lg font-semibold text-gray-800 mb-2">
+          {title}
+        </h2>
 
-      <div className="flex items-center gap-3 mt-auto">
-        <a
-          href={liveLink}
-          target="_blank"
-          rel="noreferrer"
-          className="bg-blue-500 text-white px-4 py-2 text-sm rounded-lg hover:bg-blue-600 transition"
-        >
-          Live
-        </a>
+        {/* Description */}
+        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+          {description}
+        </p>
 
-        <a
-          href={githubLink}
-          target="_blank"
-          rel="noreferrer"
-          className="border border-gray-300 px-4 py-2 text-sm rounded-lg hover:bg-gray-100 transition"
-        >
-          Code
-        </a>
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tech.map((t, i) => (
+            <span
+              key={i}
+              className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
 
-        <button
-          onClick={handleDelete}
-          className="ml-auto text-red-500 text-sm opacity-0 group-hover:opacity-100 transition"
-        >
-          Delete
-        </button>
+        {/* Buttons */}
+        <div className="flex items-center gap-3 mt-auto">
+          <a
+            href={liveLink}
+            target="_blank"
+            rel="noreferrer"
+            className="flex-1 text-center bg-blue-500 text-white px-3 py-2 text-sm rounded-lg hover:bg-blue-600 transition"
+          >
+            Live
+          </a>
+
+          <a
+            href={githubLink}
+            target="_blank"
+            rel="noreferrer"
+            className="flex-1 text-center border border-gray-300 px-3 py-2 text-sm rounded-lg hover:bg-gray-100 transition"
+          >
+            Code
+          </a>
+
+          {/* Delete button */}
+          <button
+            onClick={handleDelete}
+            className="ml-auto text-red-500 text-sm opacity-0 group-hover:opacity-100 transition"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </motion.div>
   );
