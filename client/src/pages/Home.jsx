@@ -90,7 +90,41 @@ const Home = () => {
 
      
 
+      {/* 🔹 FEATURED PROJECTS */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold text-center mb-10">
+          Featured Projects
+        </h2>
 
+        {loading ? (
+          <p className="text-center text-gray-500">Loading...</p>
+        ) : projects.length === 0 ? (
+          <p className="text-center text-gray-500">No projects found</p>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {projects.map((proj) => (
+              <ProjectCard
+                key={proj._id}
+                _id={proj._id}
+                title={proj.title}
+                description={proj.description}
+                githubLink={proj.githubLink}
+                liveLink={proj.liveLink}
+                refresh={fetchProjects}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className="text-center mt-10">
+          <button
+            onClick={() => navigate("/projects")}
+            className="text-blue-500 hover:underline"
+          >
+            View All Projects →
+          </button>
+        </div>
+      </section>
 
       {/* 🔹 ABOUT */}
       <section className="max-w-3xl mx-auto text-center">
