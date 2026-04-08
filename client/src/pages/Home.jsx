@@ -55,9 +55,9 @@ const Home = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="space-y-24"
-    >
-      {/* 🔹 HERO */}
+      className="space-y-24">
+
+      {/* hero */}
       <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
         <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
           Hi, I'm <span className="text-blue-500">Abhishek</span> 👋
@@ -85,6 +85,104 @@ const Home = () => {
           >
             Contact Me
           </button>
+        </div>
+      </section>
+
+      {/* icons */}
+
+       <section className="text-center">
+        <h2 className="text-2xl font-bold mb-10">Tech Stack</h2>
+
+        <div className="space-y-10">
+          {/* FRONTEND */}
+          <div>
+            <h3 className="font-semibold mb-4 text-gray-700">Frontend</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Tech icon={<FaReact className="text-blue-500" />} name="React" />
+              <Tech
+                icon={<FaHtml5 className="text-orange-500" />}
+                name="HTML"
+              />
+              <Tech icon={<FaCss3Alt className="text-blue-600" />} name="CSS" />
+              <Tech
+                icon={<SiJavascript className="text-yellow-400" />}
+                name="JavaScript"
+              />
+              <Tech
+                icon={<SiTailwindcss className="text-sky-400" />}
+                name="Tailwind"
+              />
+              <Tech
+                icon={<SiBootstrap className="text-purple-500" />}
+                name="Bootstrap"
+              />
+              <Tech
+                icon={<SiAngular className="text-red-500" />}
+                name="Angular"
+              />
+            </div>
+          </div>
+
+          {/* BACKEND */}
+          <div>
+            <h3 className="font-semibold mb-4 text-gray-700">Backend</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Tech
+                icon={<FaNodeJs className="text-green-500" />}
+                name="Node.js"
+              />
+              <Tech
+                icon={<SiExpress className="text-gray-700" />}
+                name="Express"
+              />
+            </div>
+          </div>
+
+          {/* DATABASE */}
+          <div>
+            <h3 className="font-semibold mb-4 text-gray-700">Database</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Tech
+                icon={<SiMongodb className="text-green-600" />}
+                name="MongoDB"
+              />
+              <Tech
+                icon={<SiMysql className="text-blue-600" />}
+                name="SQL Server"
+              />
+            </div>
+          </div>
+
+          {/* TOOLS */}
+          <div>
+            <h3 className="font-semibold mb-4 text-gray-700">Tools</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Tech
+                icon={<FaGitAlt className="text-orange-500" />}
+                name="Git"
+              />
+              <Tech icon={<FaGithub className="text-black" />} name="GitHub" />
+              <Tech
+                icon={<SiPostman className="text-orange-400" />}
+                name="Postman"
+              />
+              <Tech
+                icon={<SiInsomnia className="text-purple-500" />}
+                name="Insomnia"
+              />
+            </div>
+          </div>
+
+          {/* LANGUAGE */}
+          <div>
+            <h3 className="font-semibold mb-4 text-gray-700">Language</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Tech
+                icon={<SiCplusplus className="text-blue-600" />}
+                name="C++"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
