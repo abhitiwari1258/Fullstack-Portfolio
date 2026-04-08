@@ -1,9 +1,7 @@
-import React from "react";
-import Layout from "../components/Layout";
 
 const About = () => {
   return (
-    <Layout>
+    <div>
       <h1 className="text-3xl font-bold mb-4">About Me</h1>
 
       <p className="text-gray-600 mb-4">
@@ -24,7 +22,7 @@ const About = () => {
         <span className="bg-gray-200 px-3 py-1 rounded">MongoDB</span>
         <span className="bg-gray-200 px-3 py-1 rounded">JavaScript</span>
       </div>
-    </Layout>
+    </div>
   );
 };
 

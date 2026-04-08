@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout";
 
 const Contact = () => {
   const [form,setForm] = useState({
@@ -19,7 +18,7 @@ const Contact = () => {
     console.log(form);
   }
   return (
-    <Layout>
+    <div>
       <h1 className="text-3xl font-bold mb-4">Contact Me</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input 
@@ -53,7 +52,7 @@ const Contact = () => {
           Send Message
         </button>
       </form>
-    </Layout>
+    </div>
   );
 };
 

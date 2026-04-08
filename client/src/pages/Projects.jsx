@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
-import Layout from "../components/Layout";
-import { getProjects } from '../services/ProjectApi'
+import { getProjects } from "../services/ProjectApi";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -19,21 +19,37 @@ const Projects = () => {
     }
   };
 
-  useEffect(()=>{
-    fetchProjects()
-  },[])
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   if (loading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
-    <Layout>
-      <h1 className="text-3xl font-bold mb-6">My Projects</h1>
+    <motion.section
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.5 }}
+>
+    <section>
+      {/* Heading */}
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold mb-2">My Projects</h1>
+        <p className="text-gray-500">
+          A collection of my recent work and real-world builds
+        </p>
+      </div>
+
+      {/* Empty State */}
       {projects.length === 0 ? (
-        <p className="text-gray-500">No projects found</p>
+        <div className="text-center text-gray-500 py-20">
+          No projects found
+        </div>
       ) : (
-        <div className="grid md:grid-cols-3 gap-6">
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj) => (
             <ProjectCard
               key={proj._id}
@@ -46,8 +62,10 @@ const Projects = () => {
             />
           ))}
         </div>
+
       )}
-    </Layout>
+    </section>
+    </motion.section>
   );
 };
 

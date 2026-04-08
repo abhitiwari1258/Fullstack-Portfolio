@@ -8,20 +8,21 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
-
+import Layout from "./components/Layout"
 function App() {
   
 
   return (
     <>
     <BrowserRouter>
-      <Navbar/>
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/projects' element={<Projects/>}/>
-        <Route path='/contact' element={<Contact/>}/>
-        <Route path='/admin' element={<Admin/>}/>
+        <Route element={<Layout/>}>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/projects' element={<Projects/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/admin' element={<Admin/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
     </>
