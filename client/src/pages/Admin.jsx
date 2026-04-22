@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createProject } from "../services/projectApi";
-
+import { getContact } from "../services/ContactApi";
 const Admin = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
   });
+
+  const [contacts, setContacts] = useState([]);
+
+  const fetchContact = async () => {
+    try {
+      const res = await getContact();
+      setContacts(res.data);
+    } catch (error) {
+      console.log("Admin Error : ", error);
+    }
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,6 +33,10 @@ const Admin = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    fetchContact();
+  }, []);
 
   return (
     <div className="max-w-xl mx-auto p-6">
@@ -48,6 +63,25 @@ const Admin = () => {
           Add Project
         </button>
       </form>
+
+      {/* contact section */}
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4">Contact Messages</h2>
+
+        {contacts.length === 0 ? (
+          <p className="text-gray-500">No messages found</p>
+        ) : (
+          <div className="grid gap-4">
+            {contacts.map((c) => (
+              <div key={c._id} className="bg-white p-4 rounded-lg shadow">
+                <h3 className="font-semibold">{c.name}</h3>
+                <p className="text-sm text-gray-500">{c.email}</p>
+                <p className="mt-2">{c.message}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
