@@ -22,4 +22,14 @@ router.post("/", async(req,res)=>{
     }
 })
 
+router.get("/",async(req,res)=>{
+    try{
+        const contacts = await Contact.find().sort({createdAt: -1})
+
+         res.status(200).json(contacts);
+    }catch (error) {
+    res.status(500).json({ msg: "Error fetching contacts" });
+  }
+})
+
 export default router
