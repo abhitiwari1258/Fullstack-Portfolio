@@ -32,4 +32,16 @@ router.get("/",async(req,res)=>{
   }
 })
 
+router.delete('/:id',async(req,res)=>{
+    try{
+        await Contact.findByIdAndDelete(req.params.id)
+
+        res.status(200).json({ msg: "Contact deleted" });
+    }catch(err){
+        res.status(500).json({
+            message:"error deleting contact"
+        })
+    }
+})
+
 export default router

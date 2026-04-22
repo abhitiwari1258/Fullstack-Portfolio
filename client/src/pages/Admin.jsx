@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createProject } from "../services/projectApi";
-import { getContact } from "../services/ContactApi";
+import { getContact,deleteContact } from "../services/ContactApi";
+import toast from "react-hot-toast";
 const Admin = () => {
   const [form, setForm] = useState({
     title: "",
@@ -33,6 +34,17 @@ const Admin = () => {
       console.error(error);
     }
   };
+
+  const handleDelete = async(id)=>{
+    try{
+      await deleteContact(id);
+      toast.success("Contact deleted");
+      fetchContact()
+    }catch (error) {
+    toast.error("Delete failed");
+  }
+    
+  }
 
   useEffect(() => {
     fetchContact();
@@ -77,6 +89,12 @@ const Admin = () => {
                 <h3 className="font-semibold">{c.name}</h3>
                 <p className="text-sm text-gray-500">{c.email}</p>
                 <p className="mt-2">{c.message}</p>
+
+                <button 
+                onClick={()=>handleDelete(c._id)}
+                className="mt-3 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+                  Delete
+                </button>
               </div>
             ))}
           </div>

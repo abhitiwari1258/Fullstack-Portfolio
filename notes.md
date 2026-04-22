@@ -1,0 +1,1 @@
+React-hot-toast is a lightweight and highly customizable notification library for React applications.
