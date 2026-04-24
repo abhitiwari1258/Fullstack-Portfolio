@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import connectDB from './config/db.js';
 import projectRoutes from './routes/projectRoutes.js'
 import contactRoutes from './routes/contact.route.js'
+import authRoute from './routes/auth.route.js'
 
 dotenv.config()
 connectDB()
@@ -15,6 +16,7 @@ app.use(cors())
 app.use(express.json())
 app.use("/api/projects",projectRoutes);
 app.use("/api/contact", contactRoutes)
+app.use("/api/auth", authRoute)
 
 app.get('/',(req,res)=>{
     res.send("Api is runnung")
