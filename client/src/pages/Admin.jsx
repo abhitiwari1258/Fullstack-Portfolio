@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createProject } from "../services/projectApi";
 import { getContact, deleteContact } from "../services/ContactApi";
+import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 const Admin = () => {
@@ -63,58 +64,105 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Admin Panel</h1>
+    <div className="max-w-6xl mx-auto p-6">
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          name="title"
-          placeholder="Project Title"
-          className="border p-2 rounded"
-          value={form.title}
-          onChange={handleChange}
-        />
+    {/* 🔥 Header */}
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="mb-8"
+    >
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+        Admin Dashboard
+      </h1>
+      <p className="text-gray-500 mt-2">
+        Manage your projects and messages
+      </p>
+    </motion.div>
 
-        <textarea
-          name="description"
-          placeholder="Project Description"
-          className="border p-2 rounded"
-          value={form.description}
-          onChange={handleChange}
-        />
+    {/* 🔥 Grid Layout */}
+    <div className="grid md:grid-cols-2 gap-8">
 
-        <button type="submit" className="bg-blue-500 text-white py-2 rounded">
+      {/* ================= PROJECT FORM ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border"
+      >
+        <h2 className="text-xl font-semibold mb-4 text-blue-600">
           Add Project
-        </button>
-      </form>
+        </h2>
 
-      {/* contact section */}
-      <div className="mt-10">
-        <h2 className="text-2xl font-bold mb-4">Contact Messages</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+
+          <input
+            name="title"
+            placeholder="Project Title"
+            className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            value={form.title}
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="description"
+            placeholder="Project Description"
+            className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            value={form.description}
+            onChange={handleChange}
+          />
+
+          <button
+            type="submit"
+            className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition"
+          >
+            Add Project
+          </button>
+
+        </form>
+      </motion.div>
+
+      {/* ================= CONTACT SECTION ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border"
+      >
+        <h2 className="text-xl font-semibold mb-4 text-purple-600">
+          Contact Messages
+        </h2>
 
         {contacts.length === 0 ? (
           <p className="text-gray-500">No messages found</p>
         ) : (
-          <div className="grid gap-4">
+          <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
             {contacts.map((c) => (
-              <div key={c._id} className="bg-white p-4 rounded-lg shadow">
-                <h3 className="font-semibold">{c.name}</h3>
+              <motion.div
+                key={c._id}
+                whileHover={{ scale: 0.97 }}
+                className="bg-white p-4 rounded-xl shadow-sm border hover:shadow-md transition"
+              >
+                <h3 className="font-semibold text-lg">{c.name}</h3>
                 <p className="text-sm text-gray-500">{c.email}</p>
-                <p className="mt-2">{c.message}</p>
+                <p className="mt-2 text-gray-700">{c.message}</p>
 
                 <button
                   onClick={() => handleDelete(c._id)}
-                  className="mt-3 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                  className="mt-3 bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-600 transition"
                 >
                   Delete
                 </button>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
-      </div>
+
+      </motion.div>
+
     </div>
-  );
+
+  </div>
+);
+  // );
 };
 
 export default Admin;

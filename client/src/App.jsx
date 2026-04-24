@@ -33,11 +33,10 @@ function App() {
             path="/admin"
             element={
               <ProtectedRoute>
-                <Layout />
+                <Admin />
               </ProtectedRoute>
             }
           >
-            <Route index element={<Admin />} />
           </Route>
         </Routes>
       </BrowserRouter>
