@@ -45,6 +45,15 @@ const Navbar = () => {
           >
             Contact
           </NavLink>
+
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `${baseStyle} ${isActive ? activeStyle : inactiveStyle}`
+            }
+          >
+            Login
+          </NavLink>
         </div>
       </div>
     </nav>

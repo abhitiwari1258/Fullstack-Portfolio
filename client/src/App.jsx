@@ -20,9 +20,7 @@ function App() {
       <BrowserRouter>
         <Toaster position="top-right" />
         <Routes>
-
           <Route element={<Layout />}>
-            
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
@@ -31,12 +29,16 @@ function App() {
 
           <Route path="/login" element={<Login />} />
 
-          <Route path="/admin" element={
+          <Route
+            path="/admin"
+            element={
               <ProtectedRoute>
-                <Layout/>
+                <Layout />
               </ProtectedRoute>
-            } />
-          
+            }
+          >
+            <Route index element={<Admin />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
