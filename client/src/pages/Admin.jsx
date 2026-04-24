@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { createProject } from "../services/projectApi";
-import { getContact,deleteContact } from "../services/ContactApi";
+import { getContact, deleteContact } from "../services/ContactApi";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 const Admin = () => {
   const [form, setForm] = useState({
     title: "",
@@ -35,16 +36,27 @@ const Admin = () => {
     }
   };
 
-  const handleDelete = async(id)=>{
-    try{
-      await deleteContact(id);
-      toast.success("Contact deleted");
-      fetchContact()
-    }catch (error) {
-    toast.error("Delete failed");
-  }
-    
-  }
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This contact will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await deleteContact(id);
+        toast.success("Contact deleted");
+        fetchContact();
+      } catch (error) {
+        toast.error("Delete failed");
+      }
+    }
+  };
 
   useEffect(() => {
     fetchContact();
@@ -90,9 +102,10 @@ const Admin = () => {
                 <p className="text-sm text-gray-500">{c.email}</p>
                 <p className="mt-2">{c.message}</p>
 
-                <button 
-                onClick={()=>handleDelete(c._id)}
-                className="mt-3 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+                <button
+                  onClick={() => handleDelete(c._id)}
+                  className="mt-3 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                >
                   Delete
                 </button>
               </div>
