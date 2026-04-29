@@ -10,7 +10,7 @@ const ProjectCard = ({
   refresh,
   showDelete = true,
   image,
-  tech = [],
+  tech 
 }) => {
   const handleDelete = async () => {
     try {
@@ -20,6 +20,7 @@ const ProjectCard = ({
       console.error(error);
     }
   };
+
 
   return (
     <motion.div
@@ -51,6 +52,7 @@ const ProjectCard = ({
         </p>
 
         {/* Tech Stack */}
+        {tech && tech.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-4">
           {tech.map((t, i) => (
             <span
@@ -61,6 +63,7 @@ const ProjectCard = ({
             </span>
           ))}
         </div>
+        )}
 
         {/* Buttons */}
         <div className="flex items-center gap-3 mt-auto">

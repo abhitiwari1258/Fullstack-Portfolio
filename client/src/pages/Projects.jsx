@@ -58,6 +58,7 @@ const Projects = () => {
               description={proj.description}
               githubLink={proj.githubLink}
               liveLink={proj.liveLink}
+              tech={proj.tech}
               refresh={fetchProjects}
             />
           ))}
