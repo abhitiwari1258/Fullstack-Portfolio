@@ -24,7 +24,7 @@ export const ThemeProvider = ({ children }) => {
   }, [dark]);
 
   const toggleTheme = () => {
-    setDark(!dark);
+    setDark((prev)=> !prev);
   };
 
   return (

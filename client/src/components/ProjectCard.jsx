@@ -32,7 +32,7 @@ const ProjectCard = ({
       {/* Image */}
       <div className="h-40 w-full overflow-hidden">
         <img
-          src={image || "https://source.unsplash.com/400x200/?website"}
+          src={image}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
         />

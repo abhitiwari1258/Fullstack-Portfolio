@@ -12,6 +12,10 @@ const Admin = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
+    image: "",
+    githubLink: "",
+    liveLink: "",
+    tech: "",
   });
 
   const [contacts, setContacts] = useState([]);
@@ -33,15 +37,26 @@ const Admin = () => {
     e.preventDefault();
 
     try {
-      await createProject(form);
+      const formattedData = {
+        ...form,
+        tech: form.tech.split(",").map((t) => t.trim()),
+      };
+      await createProject(formattedData);
       alert("Project added");
-      setForm({ title: "", description: "" });
+      setForm({
+        title: "",
+        description: "",
+        image: "",
+        githubLink: "",
+        liveLink: "",
+        tech: "",
+      });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "Want to LogOut!",
@@ -136,6 +151,38 @@ const Admin = () => {
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               value={form.title}
               onChange={handleChange}
+            />
+
+            <input
+              name="image"
+              placeholder="Image URL"
+              value={form.image}
+              onChange={handleChange}
+              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+
+            <input
+              name="githubLink"
+              placeholder="GitHub Link"
+              value={form.githubLink}
+              onChange={handleChange}
+              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+
+            <input
+              name="liveLink"
+              placeholder="Live Link"
+              value={form.liveLink}
+              onChange={handleChange}
+              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+
+            <input
+              name="tech"
+              placeholder="Tech (React, Node, MongoDB)"
+              value={form.tech}
+              onChange={handleChange}
+              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
             />
 
             <textarea
