@@ -272,7 +272,7 @@ export default About;
 //       </div>
 
 //       {/* Skills */}
-//       {/* <div>
+//       <div>
 //         <h2 className="text-2xl font-bold mb-2 text-center">Skills</h2>
 //         <p className="text-center text-sm text-gray-400 mb-8">Click a skill to see proficiency</p>
 
@@ -286,17 +286,17 @@ export default About;
 //             />
 //           ))}
 //         </div>
-//       </div> */}
+//       </div>
 
 //       {/* Stats */}
-//       {/* <div
+//       <div
 //         ref={statsRef}
 //         className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center"
 //       >
 //         {stats.map(s => (
 //           <StatCard key={s.label} {...s} isVisible={statsVisible} />
 //         ))}
-//       </div> */}
+//       </div>
 
 //     </div>
 //   );

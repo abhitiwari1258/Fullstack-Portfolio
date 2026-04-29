@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 const Navbar = () => {
+  const { dark, toggleTheme } = useTheme();
+
   const baseStyle = "px-4 py-2 rounded-md";
   const activeStyle = "bg-blue-500 text-white";
   const inactiveStyle = "text-gray-700 hover:bg-gray-200";
@@ -55,6 +58,11 @@ const Navbar = () => {
             Login
           </NavLink>
         </div>
+
+        <button onClick={toggleTheme}>
+          {dark ? "Light Mode" : "Dark Mode"}
+        </button>
+
       </div>
     </nav>
   );

@@ -193,7 +193,6 @@ const Admin = () => {
       </div>
     </div>
   );
-  // );
 };
 
 export default Admin;
