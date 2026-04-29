@@ -4,7 +4,11 @@ import { getContact, deleteContact } from "../services/ContactApi";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+
+import { useNavigate } from "react-router-dom";
+
 const Admin = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -37,6 +41,28 @@ const Admin = () => {
     }
   };
 
+  const handleLogout = async() => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "Want to LogOut!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, LoggedOut!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        localStorage.removeItem("token");
+        toast.success("Log out successfull");
+        navigate("/");
+      } catch (error) {
+        toast.error("LogOut failed");
+      }
+    }
+  };
+
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -65,103 +91,108 @@ const Admin = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-
-    {/* 🔥 Header */}
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="mb-8"
-    >
-      <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-        Admin Dashboard
-      </h1>
-      <p className="text-gray-500 mt-2">
-        Manage your projects and messages
-      </p>
-    </motion.div>
-
-    {/* 🔥 Grid Layout */}
-    <div className="grid md:grid-cols-2 gap-8">
-
-      {/* ================= PROJECT FORM ================= */}
+      {/* 🔥 Header */}
       <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-8"
       >
-        <h2 className="text-xl font-semibold mb-4 text-blue-600">
-          Add Project
-        </h2>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+              Admin Dashboard
+            </h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-
-          <input
-            name="title"
-            placeholder="Project Title"
-            className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-            value={form.title}
-            onChange={handleChange}
-          />
-
-          <textarea
-            name="description"
-            placeholder="Project Description"
-            className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-            value={form.description}
-            onChange={handleChange}
-          />
+            <p className="text-gray-500 mt-2">
+              Manage your projects and messages
+            </p>
+          </div>
 
           <button
-            type="submit"
-            className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition"
+            onClick={handleLogout}
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition shadow-md"
           >
-            Add Project
+            Logout
           </button>
-
-        </form>
+        </div>
       </motion.div>
 
-      {/* ================= CONTACT SECTION ================= */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border"
-      >
-        <h2 className="text-xl font-semibold mb-4 text-purple-600">
-          Contact Messages
-        </h2>
+      {/* 🔥 Grid Layout */}
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* ========== PROJECT FORM ========= */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border"
+        >
+          <h2 className="text-xl font-semibold mb-4 text-blue-600">
+            Add Project
+          </h2>
 
-        {contacts.length === 0 ? (
-          <p className="text-gray-500">No messages found</p>
-        ) : (
-          <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
-            {contacts.map((c) => (
-              <motion.div
-                key={c._id}
-                whileHover={{ scale: 0.97 }}
-                className="bg-white p-4 rounded-xl shadow-sm border hover:shadow-md transition"
-              >
-                <h3 className="font-semibold text-lg">{c.name}</h3>
-                <p className="text-sm text-gray-500">{c.email}</p>
-                <p className="mt-2 text-gray-700">{c.message}</p>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              name="title"
+              placeholder="Project Title"
+              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+              value={form.title}
+              onChange={handleChange}
+            />
 
-                <button
-                  onClick={() => handleDelete(c._id)}
-                  className="mt-3 bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-600 transition"
+            <textarea
+              name="description"
+              placeholder="Project Description"
+              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+              value={form.description}
+              onChange={handleChange}
+            />
+
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition"
+            >
+              Add Project
+            </button>
+          </form>
+        </motion.div>
+
+        {/* ===== CONTACT SECTION ====== */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border"
+        >
+          <h2 className="text-xl font-semibold mb-4 text-purple-600">
+            Contact Messages
+          </h2>
+
+          {contacts.length === 0 ? (
+            <p className="text-gray-500">No messages found</p>
+          ) : (
+            <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+              {contacts.map((c) => (
+                <motion.div
+                  key={c._id}
+                  whileHover={{ scale: 0.97 }}
+                  className="bg-white p-4 rounded-xl shadow-sm border hover:shadow-md transition"
                 >
-                  Delete
-                </button>
-              </motion.div>
-            ))}
-          </div>
-        )}
+                  <h3 className="font-semibold text-lg">{c.name}</h3>
+                  <p className="text-sm text-gray-500">{c.email}</p>
+                  <p className="mt-2 text-gray-700">{c.message}</p>
 
-      </motion.div>
-
+                  <button
+                    onClick={() => handleDelete(c._id)}
+                    className="mt-3 bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-600 transition"
+                  >
+                    Delete
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </div>
     </div>
-
-  </div>
-);
+  );
   // );
 };
 
