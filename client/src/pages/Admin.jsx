@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
+import { getProjects } from "../services/ProjectApi";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ const Admin = () => {
   });
 
   const [contacts, setContacts] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchContact = async () => {
     try {
@@ -26,6 +29,15 @@ const Admin = () => {
       setContacts(res.data);
     } catch (error) {
       console.log("Admin Error : ", error);
+    }
+  };
+
+  const fetchProjects = async () => {
+    try {
+      const res = await getProjects();
+      setProjects(res.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -41,8 +53,9 @@ const Admin = () => {
         ...form,
         tech: form.tech.split(",").map((t) => t.trim()),
       };
+
       await createProject(formattedData);
-      alert("Project added");
+      toast.success("Project added 🚀");
       setForm({
         title: "",
         description: "",
@@ -51,8 +64,10 @@ const Admin = () => {
         liveLink: "",
         tech: "",
       });
+
+      fetchProjects();
     } catch (error) {
-      console.error(error);
+      toast.error("Failed to add project");
     }
   };
 
@@ -101,7 +116,12 @@ const Admin = () => {
   };
 
   useEffect(() => {
-    fetchContact();
+    const loadData = async () => {
+      setLoading(true);
+      await Promise.all([fetchContact(), fetchProjects()]);
+      setLoading(false);
+    };
+    loadData();
   }, []);
 
   return (
@@ -133,20 +153,38 @@ const Admin = () => {
 
         {/* 🔥 Stats Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-5 rounded-xl shadow">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="bg-white p-5 rounded-xl shadow"
+          >
             <p className="text-gray-500">Total Messages</p>
-            <h2 className="text-2xl font-bold">{contacts.length}</h2>
-          </div>
+            <h2 className="text-3xl font-bold">{contacts.length}</h2>
+          </motion.div>
 
-          <div className="bg-white p-5 rounded-xl shadow">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="bg-white p-5 rounded-xl shadow"
+          >
             <p className="text-gray-500">Projects</p>
-            <h2 className="text-2xl font-bold">--</h2>
-          </div>
+            <h2 className="text-3xl font-bold">{projects.length}</h2>
+          </motion.div>
 
-          <div className="bg-white p-5 rounded-xl shadow">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="bg-white p-5 rounded-xl shadow"
+          >
             <p className="text-gray-500">Status</p>
-            <h2 className="text-green-500 font-bold">Active</h2>
-          </div>
+
+            {loading ? (
+              <h2 className="text-gray-400">Loading...</h2>
+            ) : projects.length === 0 ? (
+              <h2 className="text-yellow-500 font-bold">No Projects</h2>
+            ) : contacts.length === 0 ? (
+              <h2 className="text-blue-500 font-bold">Idle</h2>
+            ) : (
+              <h2 className="text-green-500 font-bold">Active</h2>
+            )}
+          </motion.div>
         </div>
 
         {/* 🔥 Grid Layout */}
@@ -212,9 +250,10 @@ const Admin = () => {
 
               <button
                 type="submit"
-                className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition"
+                disabled={loading}
+                className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition disabled:opacity-50"
               >
-                Add Project
+                {loading ? "Adding..." : "Add Project"}
               </button>
             </form>
           </motion.div>
