@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { getProjects } from "../services/ProjectApi";
 
 import DashboardChart from "../components/DashboardChart";
+import ProjectPieChart from "../components/ProjectPieChart";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -169,122 +170,121 @@ const Admin = () => {
 
         {activeTab === "dashboard" && (
           <div className="space-y-8">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-5 rounded-xl shadow"
+              >
+                <p className="text-gray-500">Total Messages</p>
+                <h2 className="text-3xl font-bold">{contacts.length}</h2>
+              </motion.div>
 
-          
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-white p-5 rounded-xl shadow"
-            >
-              <p className="text-gray-500">Total Messages</p>
-              <h2 className="text-3xl font-bold">{contacts.length}</h2>
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-5 rounded-xl shadow"
+              >
+                <p className="text-gray-500">Projects</p>
+                <h2 className="text-3xl font-bold">{projects.length}</h2>
+              </motion.div>
 
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-white p-5 rounded-xl shadow"
-            >
-              <p className="text-gray-500">Projects</p>
-              <h2 className="text-3xl font-bold">{projects.length}</h2>
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-5 rounded-xl shadow"
+              >
+                <p className="text-gray-500">Status</p>
 
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-white p-5 rounded-xl shadow"
-            >
-              <p className="text-gray-500">Status</p>
-
-              {loading ? (
-                <h2 className="text-gray-400">Loading...</h2>
-              ) : projects.length === 0 ? (
-                <h2 className="text-yellow-500 font-bold">No Projects</h2>
-              ) : contacts.length === 0 ? (
-                <h2 className="text-blue-500 font-bold">Idle</h2>
-              ) : (
-                <h2 className="text-green-500 font-bold">Active</h2>
-              )}
-            </motion.div>
+                {loading ? (
+                  <h2 className="text-gray-400">Loading...</h2>
+                ) : projects.length === 0 ? (
+                  <h2 className="text-yellow-500 font-bold">No Projects</h2>
+                ) : contacts.length === 0 ? (
+                  <h2 className="text-blue-500 font-bold">Idle</h2>
+                ) : (
+                  <h2 className="text-green-500 font-bold">Active</h2>
+                )}
+              </motion.div>
             </div>
 
-            <DashboardChart
-              projects={projects}
-              contacts={contacts}
-            />
+            <DashboardChart projects={projects} contacts={contacts} />
           </div>
         )}
 
         {/* 🔥 Grid Layout */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-1 gap-8">
           {/* ========== PROJECT FORM ========= */}
 
           {activeTab === "projects" && (
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-white p-6 rounded-2xl shadow"
-            >
-              <h2 className="text-xl font-semibold mb-4 text-blue-600">
-                Add Project
-              </h2>
+            <div className="space-y-6 grid-cols-2 grid ">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-white p-2 rounded-2xl shadow"
+              >
+                <h2 className="text-xl font-semibold mb-4 text-blue-600">
+                  Add Project
+                </h2>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <input
-                  name="title"
-                  placeholder="Project Title"
-                  className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                  value={form.title}
-                  onChange={handleChange}
-                />
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <input
+                    name="title"
+                    placeholder="Project Title"
+                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    value={form.title}
+                    onChange={handleChange}
+                  />
 
-                <input
-                  name="image"
-                  placeholder="Image URL"
-                  value={form.image}
-                  onChange={handleChange}
-                  className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                />
+                  <input
+                    name="image"
+                    placeholder="Image URL"
+                    value={form.image}
+                    onChange={handleChange}
+                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                  />
 
-                <input
-                  name="githubLink"
-                  placeholder="GitHub Link"
-                  value={form.githubLink}
-                  onChange={handleChange}
-                  className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                />
+                  <input
+                    name="githubLink"
+                    placeholder="GitHub Link"
+                    value={form.githubLink}
+                    onChange={handleChange}
+                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                  />
 
-                <input
-                  name="liveLink"
-                  placeholder="Live Link"
-                  value={form.liveLink}
-                  onChange={handleChange}
-                  className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                />
+                  <input
+                    name="liveLink"
+                    placeholder="Live Link"
+                    value={form.liveLink}
+                    onChange={handleChange}
+                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                  />
 
-                <input
-                  name="tech"
-                  placeholder="Tech (React, Node, MongoDB)"
-                  value={form.tech}
-                  onChange={handleChange}
-                  className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                />
+                  <input
+                    name="tech"
+                    placeholder="Tech (React, Node, MongoDB)"
+                    value={form.tech}
+                    onChange={handleChange}
+                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                  />
 
-                <textarea
-                  name="description"
-                  placeholder="Project Description"
-                  className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                  value={form.description}
-                  onChange={handleChange}
-                />
+                  <textarea
+                    name="description"
+                    placeholder="Project Description"
+                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    value={form.description}
+                    onChange={handleChange}
+                  />
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition disabled:opacity-50"
-                >
-                  {loading ? "Adding..." : "Add Project"}
-                </button>
-              </form>
-            </motion.div>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition disabled:opacity-50"
+                  >
+                    {loading ? "Adding..." : "Add Project"}
+                  </button>
+                </form>
+              </motion.div>
+
+              <ProjectPieChart projects={projects} />
+            </div>
           )}
 
           {/* ===== CONTACT SECTION ====== */}
