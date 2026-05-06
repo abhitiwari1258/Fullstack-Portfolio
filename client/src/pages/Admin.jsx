@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { getProjects } from "../services/ProjectApi";
 
+import DashboardChart from "../components/DashboardChart";
+
 const Admin = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -166,6 +168,9 @@ const Admin = () => {
         {/* 🔥 Stats Cards */}
 
         {activeTab === "dashboard" && (
+          <div className="space-y-8">
+
+          
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -199,6 +204,12 @@ const Admin = () => {
                 <h2 className="text-green-500 font-bold">Active</h2>
               )}
             </motion.div>
+            </div>
+
+            <DashboardChart
+              projects={projects}
+              contacts={contacts}
+            />
           </div>
         )}
 
