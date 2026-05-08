@@ -7,28 +7,77 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 
+import {
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+} from "react-icons/fa";
+
+import {
+  SiJavascript,
+  SiMongodb,
+  SiExpress,
+  SiTailwindcss,
+  SiPostman,
+  SiGithub,
+  SiMysql,
+} from "react-icons/si";
+
 import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import abhishek from "../assets/abhishek.png";
 
 const skills = [
-  "React",
-  "Node.js",
-  "MongoDB",
-  "JavaScript",
-  "Tailwind",
-  "Git",
-  "Express",
-  "Postman",
+  {
+    name: "React",
+    icon: <FaReact className="text-cyan-500 text-4xl" />,
+  },
+  {
+    name: "Node.js",
+    icon: <FaNodeJs className="text-green-500 text-4xl" />,
+  },
+  {
+    name: "MongoDB",
+    icon: <SiMongodb className="text-green-600 text-4xl" />,
+  },
+  {
+    name: "Express",
+    icon: <SiExpress className="text-gray-700 text-4xl" />,
+  },
+  {
+    name: "JavaScript",
+    icon: <SiJavascript className="text-yellow-400 text-4xl" />,
+  },
+  {
+    name: "Tailwind",
+    icon: <SiTailwindcss className="text-sky-400 text-4xl" />,
+  },
+  {
+    name: "Git",
+    icon: <FaGitAlt className="text-orange-500 text-4xl" />,
+  },
+  {
+    name: "GitHub",
+    icon: <SiGithub className="text-black text-4xl" />,
+  },
+  {
+    name: "Postman",
+    icon: <SiPostman className="text-orange-400 text-4xl" />,
+  },
+  {
+    name: "MySQL",
+    icon: <SiMysql className="text-blue-500 text-4xl" />,
+  },
 ];
 
 const About = () => {
   return (
     <div className="space-y-24">
-
       {/* HERO SECTION */}
       <div className="grid lg:grid-cols-2 gap-16 items-center">
-
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -36,7 +85,6 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="space-y-8"
         >
-
           <div>
             <p className="text-blue-500 font-semibold mb-2">
               Full Stack Developer
@@ -49,15 +97,14 @@ const About = () => {
 
           <p className="text-gray-600 text-lg leading-relaxed">
             Passionate full-stack developer focused on building modern,
-            scalable, and user-friendly web applications using React,
-            Node.js, Express, and MongoDB.
+            scalable, and user-friendly web applications using React, Node.js,
+            Express, and MongoDB.
           </p>
 
           {/* SOCIAL LINKS */}
           <div className="flex gap-4">
-
             <a
-              href="https://github.com/"
+              href="https://github.com/abhitiwari1258"
               target="_blank"
               className="bg-gray-900 text-white p-4 rounded-full hover:scale-110 hover:rotate-6 transition duration-300 shadow-md"
             >
@@ -65,7 +112,7 @@ const About = () => {
             </a>
 
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/abhishek-tiwari-054bab34b/"
               target="_blank"
               className="bg-blue-600 text-white p-4 rounded-full hover:scale-110 hover:rotate-6 transition duration-300 shadow-md"
             >
@@ -73,13 +120,12 @@ const About = () => {
             </a>
 
             <a
-              href="https://leetcode.com/"
+              href="https://leetcode.com/u/abhishektiwari_2024/"
               target="_blank"
               className="bg-yellow-500 text-white p-4 rounded-full hover:scale-110 hover:rotate-6 transition duration-300 shadow-md"
             >
               <SiLeetcode size={20} />
             </a>
-
           </div>
 
           {/* BUTTON */}
@@ -91,7 +137,6 @@ const About = () => {
             <FaDownload />
             Download Resume
           </a>
-
         </motion.div>
 
         {/* RIGHT IMAGE */}
@@ -101,9 +146,7 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="flex justify-center"
         >
-
           <div className="relative">
-
             <div className="absolute inset-0 bg-blue-500 blur-3xl opacity-20 rounded-full"></div>
 
             <img
@@ -111,15 +154,12 @@ const About = () => {
               alt="profile"
               className="relative w-[350px] rounded-3xl shadow-2xl border-4 border-white"
             />
-
           </div>
-
         </motion.div>
       </div>
 
       {/* INFO + EDUCATION */}
       <div className="grid md:grid-cols-2 gap-8">
-
         {/* PERSONAL INFO */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -127,28 +167,23 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100"
         >
-
-          <h2 className="text-2xl font-bold mb-6">
-            Personal Information
-          </h2>
+          <h2 className="text-2xl font-bold mb-6">Personal Information</h2>
 
           <div className="space-y-5 text-gray-700">
-
             <p className="flex items-center gap-4">
               <FaEnvelope className="text-blue-500 text-xl" />
-              abhishek@example.com
+              abhishektiwari1258@gmail.com
             </p>
 
             <p className="flex items-center gap-4">
               <FaPhone className="text-green-500 text-xl" />
-              +91 XXXXX XXXXX
+              +91 6283157291
             </p>
 
             <p className="flex items-center gap-4">
               <FaMapMarkerAlt className="text-red-500 text-xl" />
-              India
+              Ghaziabad,UP,India
             </p>
-
           </div>
         </motion.div>
 
@@ -159,65 +194,53 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100"
         >
-
-          <h2 className="text-2xl font-bold mb-6">
-            Education
-          </h2>
+          <h2 className="text-2xl font-bold mb-6">Education</h2>
 
           <div className="relative border-l-4 border-blue-500 pl-6">
-
             <div className="mb-8">
               <h3 className="text-xl font-semibold">
-                B.Tech - Computer Science
+                B.Tech - Computer Science and Engineering
               </h3>
 
-              <p className="text-gray-500">
-                XYZ College • 2021 - 2025
-              </p>
+              <p className="text-gray-500">IMS Engineering College • 2021 - 2025</p>
             </div>
-
           </div>
-
         </motion.div>
       </div>
 
       {/* SKILLS */}
       <div>
-
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-3xl font-bold text-center mb-12"
         >
-          Skills & Technologies
+          Tech Stack
         </motion.h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {skills.map((skill, index) => (
             <motion.div
-              key={skill}
+              key={skill.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
               whileHover={{
                 scale: 1.08,
-                rotate: 1,
+                y: -5,
               }}
-              className="bg-white border border-gray-100 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition cursor-pointer"
+              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 flex flex-col items-center gap-4 hover:shadow-2xl transition"
             >
-              <p className="font-semibold text-gray-700">
-                {skill}
-              </p>
+              {skill.icon}
+
+              <p className="font-semibold text-gray-700">{skill.name}</p>
             </motion.div>
           ))}
-
         </div>
       </div>
 
       {/* STATS */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-
         {[
           { value: "10+", label: "Projects" },
           { value: "1+", label: "Years Learning" },
@@ -230,20 +253,14 @@ const About = () => {
             whileHover={{ scale: 1.05 }}
             className="bg-white p-8 rounded-3xl text-center shadow-lg border border-gray-100"
           >
-
             <h3 className="text-4xl font-bold text-blue-500 mb-2">
               {item.value}
             </h3>
 
-            <p className="text-gray-600">
-              {item.label}
-            </p>
-
+            <p className="text-gray-600">{item.label}</p>
           </motion.div>
         ))}
-
       </div>
-
     </div>
   );
 };
