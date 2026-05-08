@@ -29,27 +29,27 @@ const Projects = () => {
 
   return (
     <motion.section
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.5 }}
+  className="space-y-12"
 >
-    <section>
       {/* Heading */}
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold mb-2">My Projects</h1>
-        <p className="text-gray-500">
+      <div className="text-center mb-14">
+        <h1 className="text-5xl font-bold mb-4 text-gray-900 dark:text-white">My Projects</h1>
+        <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto">
           A collection of my recent work and real-world builds
         </p>
       </div>
 
       {/* Empty State */}
       {projects.length === 0 ? (
-        <div className="text-center text-gray-500 py-20">
+        <div className="text-center text-gray-500 dark:text-gray-400 py-24 text-lg">
           No projects found
         </div>
       ) : (
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((proj) => (
             <ProjectCard
               key={proj._id}
@@ -65,7 +65,6 @@ const Projects = () => {
         </div>
 
       )}
-    </section>
     </motion.section>
   );
 };

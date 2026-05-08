@@ -207,6 +207,7 @@ const About = () => {
           </div>
         </motion.div>
       </div>
+      
 
       {/* SKILLS */}
       <div>
