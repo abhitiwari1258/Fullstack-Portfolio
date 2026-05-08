@@ -28,14 +28,24 @@ const Contact = () => {
     // console.log(form);
   }
   return (
-    <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-md">
-      <h1 className="text-2xl font-bold mb-6 text-center">Contact Me</h1>
+    <div className="max-w-2xl mx-auto
+    bg-white/80 dark:bg-gray-900/80
+    backdrop-blur-xl
+    border border-gray-200 dark:border-gray-800
+    p-8 md:p-10
+    rounded-3xl
+    shadow-2xl
+    transition duration-300">
+      <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">Contact Me</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <input 
         type="text"
         name="name"
-        className="w-full border p-3 rounded-md"
+        className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700
+        text-gray-900 dark:text-white p-4 rounded-2xl
+        outline-none focus:ring-2 focus:ring-blue-500
+        transition"
         value={form.name}
         placeholder="Enter your Name" 
         onChange={handleChange}
@@ -45,7 +55,14 @@ const Contact = () => {
         <input 
         type="email" 
         name="email"
-        className="w-full border p-3 rounded-md"
+        className="w-full
+        bg-gray-50 dark:bg-gray-800
+        border border-gray-300 dark:border-gray-700
+        text-gray-900 dark:text-white
+        p-4 rounded-2xl
+        outline-none
+        focus:ring-2 focus:ring-blue-500
+        transition"
         required
         value={form.email}
         placeholder="Enter your Email" 
@@ -55,7 +72,15 @@ const Contact = () => {
         <input 
         type="text" 
         name="message"
-        className="w-full border p-3 rounded-md h-32"
+        className="w-full h-36
+        bg-gray-50 dark:bg-gray-800
+        border border-gray-300 dark:border-gray-700
+        text-gray-900 dark:text-white
+        p-4 rounded-2xl
+        outline-none
+        resize-none
+        focus:ring-2 focus:ring-blue-500
+        transition"
         required
         value={form.message}
         placeholder="Enter your Message" 
@@ -64,7 +89,15 @@ const Contact = () => {
 
         <button 
         type="submit"
-        className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition">
+        className="w-full
+        bg-gradient-to-r from-blue-500 to-cyan-500
+        text-white
+        py-4 rounded-2xl
+        font-semibold
+        shadow-lg
+        hover:scale-[1.02]
+        hover:shadow-blue-500/30
+        transition duration-300">
           Send Message
         </button>
       </form>

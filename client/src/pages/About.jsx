@@ -165,22 +165,36 @@ const About = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100"
+          className="bg-white/80 dark:bg-gray-900/80
+    backdrop-blur-xl
+    border border-gray-200 dark:border-gray-800
+    p-8 rounded-3xl
+    shadow-xl
+    transition duration-300"
         >
-          <h2 className="text-2xl font-bold mb-6">Personal Information</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            Personal Information
+          </h2>
 
           <div className="space-y-5 text-gray-700">
-            <p className="flex items-center gap-4">
+            <p
+              className="flex items-center gap-4
+  text-gray-700 dark:text-gray-300"
+            >
               <FaEnvelope className="text-blue-500 text-xl" />
               abhishektiwari1258@gmail.com
             </p>
 
-            <p className="flex items-center gap-4">
+            <p
+              className="flex items-center gap-4 text-gray-700 dark:text-gray-300"
+            >
               <FaPhone className="text-green-500 text-xl" />
               +91 6283157291
             </p>
 
-            <p className="flex items-center gap-4">
+            <p
+              className="flex items-center gap-4 text-gray-700 dark:text-gray-300"
+            >
               <FaMapMarkerAlt className="text-red-500 text-xl" />
               Ghaziabad,UP,India
             </p>
@@ -192,29 +206,32 @@ const About = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100"
+          className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800 p-8 rounded-3xl shadow-xl transition duration-300"
         >
           <h2 className="text-2xl font-bold mb-6">Education</h2>
 
-          <div className="relative border-l-4 border-blue-500 pl-6">
+          <div
+            className="relative border-l-4 border-blue-500 pl-8 py-2 space-y-10"
+          >
             <div className="mb-8">
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
                 B.Tech - Computer Science and Engineering
               </h3>
 
-              <p className="text-gray-500">IMS Engineering College • 2021 - 2025</p>
+              <p className="text-gray-500 dark:text-gray-400">
+                IMS Engineering College • 2021 - 2025
+              </p>
             </div>
           </div>
         </motion.div>
       </div>
-      
 
       {/* SKILLS */}
       <div>
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-3xl font-bold text-center mb-12"
+          className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white"
         >
           Tech Stack
         </motion.h2>
@@ -230,11 +247,13 @@ const About = () => {
                 scale: 1.08,
                 y: -5,
               }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 flex flex-col items-center gap-4 hover:shadow-2xl transition"
+              className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300 cursor-pointer"
             >
               {skill.icon}
 
-              <p className="font-semibold text-gray-700">{skill.name}</p>
+              <p className="font-medium text-gray-800 dark:text-gray-200">
+                {skill.name}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -252,13 +271,13 @@ const About = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.05 }}
-            className="bg-white p-8 rounded-3xl text-center shadow-lg border border-gray-100"
+            className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800 p-8 rounded-3xl shadow-lg hover:-translate-y-2 transition duration-300"
           >
             <h3 className="text-4xl font-bold text-blue-500 mb-2">
               {item.value}
             </h3>
 
-            <p className="text-gray-600">{item.label}</p>
+            <p className="text-gray-600 dark:text-gray-400">{item.label}</p>
           </motion.div>
         ))}
       </div>

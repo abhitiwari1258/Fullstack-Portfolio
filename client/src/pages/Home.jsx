@@ -55,8 +55,8 @@ const Home = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="space-y-24">
-
+      className="space-y-24"
+    >
       {/* hero */}
       <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
         <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
@@ -90,14 +90,21 @@ const Home = () => {
 
       {/* icons */}
 
-       <section className="text-center">
-        <h2 className="text-2xl font-bold mb-10">Tech Stack</h2>
+      <section className="text-center py-20">
+        <h2 className="text-4xl font-bold mb-14 text-gray-900 dark:text-white">
+          Tech Stack
+        </h2>
 
         <div className="space-y-10">
           {/* FRONTEND */}
           <div>
-            <h3 className="font-semibold mb-4 text-gray-700">Frontend</h3>
-            <div className="flex flex-wrap justify-center gap-6">
+            <h3
+              className="text-xl font-semibold mb-6
+  text-gray-800 dark:text-gray-200"
+            >
+              Frontend
+            </h3>
+            <div className="flex flex-wrap justify-center gap-5">
               <Tech icon={<FaReact className="text-blue-500" />} name="React" />
               <Tech
                 icon={<FaHtml5 className="text-orange-500" />}
@@ -125,8 +132,13 @@ const Home = () => {
 
           {/* BACKEND */}
           <div>
-            <h3 className="font-semibold mb-4 text-gray-700">Backend</h3>
-            <div className="flex flex-wrap justify-center gap-6">
+            <h3
+              className="text-xl font-semibold mb-6
+  text-gray-800 dark:text-gray-200"
+            >
+              Backend
+            </h3>
+            <div className="flex flex-wrap justify-center gap-5">
               <Tech
                 icon={<FaNodeJs className="text-green-500" />}
                 name="Node.js"
@@ -140,8 +152,13 @@ const Home = () => {
 
           {/* DATABASE */}
           <div>
-            <h3 className="font-semibold mb-4 text-gray-700">Database</h3>
-            <div className="flex flex-wrap justify-center gap-6">
+            <h3
+              className="text-xl font-semibold mb-6
+  text-gray-800 dark:text-gray-200"
+            >
+              Database
+            </h3>
+            <div className="flex flex-wrap justify-center gap-5">
               <Tech
                 icon={<SiMongodb className="text-green-600" />}
                 name="MongoDB"
@@ -155,13 +172,21 @@ const Home = () => {
 
           {/* TOOLS */}
           <div>
-            <h3 className="font-semibold mb-4 text-gray-700">Tools</h3>
-            <div className="flex flex-wrap justify-center gap-6">
+            <h3
+              className="text-xl font-semibold mb-6
+  text-gray-800 dark:text-gray-200"
+            >
+              Tools
+            </h3>
+            <div className="flex flex-wrap justify-center gap-5">
               <Tech
                 icon={<FaGitAlt className="text-orange-500" />}
                 name="Git"
               />
-              <Tech icon={<FaGithub className="text-black" />} name="GitHub" />
+              <Tech
+                icon={<FaGithub className="text-black dark:text-white" />}
+                name="GitHub"
+              />
               <Tech
                 icon={<SiPostman className="text-orange-400" />}
                 name="Postman"
@@ -185,8 +210,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      
 
       {/* 🔹 FEATURED PROJECTS */}
       <section className="mt-16">
@@ -238,15 +261,51 @@ const Home = () => {
       </section>
 
       {/* 🔹 CTA */}
-      <section className="text-center">
-        <h2 className="text-2xl font-bold mb-4">Let's Work Together 🚀</h2>
+      <section
+        className="
+        relative overflow-hidden
+        bg-gradient-to-r
+        from-blue-500 to-cyan-500
+        dark:from-blue-900 dark:to-cyan-900
+        rounded-3xl
+        py-20 px-8
+        text-center
+        shadow-2xl
+      "
+      >
+        {/* Background Glow */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-300 rounded-full blur-3xl" />
+        </div>
 
-        <button
-          onClick={() => navigate("/contact")}
-          className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
-        >
-          Contact Me
-        </button>
+        <div className="relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Let’s Build Something Amazing 🚀
+          </h2>
+
+          <p className="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
+            I’m open to internships, freelance work, and full-stack developer
+            opportunities. Let’s create modern and scalable web applications
+            together.
+          </p>
+
+          <button
+            onClick={() => navigate("/contact")}
+            className="
+            bg-white text-blue-600
+            px-8 py-4
+            rounded-2xl
+            font-semibold
+            shadow-xl
+            hover:scale-105
+            hover:shadow-white/30
+            transition duration-300
+          "
+          >
+            Contact Me
+          </button>
+        </div>
       </section>
     </motion.div>
   );
@@ -254,10 +313,28 @@ const Home = () => {
 
 const Tech = ({ icon, name }) => {
   return (
-    <div className="flex flex-col items-center gap-2 bg-white p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition">
-      <div className="text-3xl">{icon}</div>
-      <span className="text-sm font-medium">{name}</span>
-    </div>
+    <motion.div
+      whileHover={{ scale: 1.08 }}
+      className="
+        bg-white dark:bg-gray-900
+        border border-gray-200 dark:border-gray-700
+        rounded-2xl
+        p-6
+        w-28 h-28
+        flex flex-col items-center justify-center
+        text-center
+        shadow-lg hover:shadow-2xl
+        hover:-translate-y-2
+        transition duration-300
+        cursor-pointer
+      "
+    >
+      <div className="text-4xl mb-3">{icon}</div>
+
+      <p className="font-medium text-gray-800 dark:text-gray-200 text-sm">
+        {name}
+      </p>
+    </motion.div>
   );
 };
 
