@@ -166,12 +166,12 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="bg-white/80 dark:bg-gray-900/80
-    backdrop-blur-xl
-    border border-gray-200 dark:border-gray-800
-    p-8 rounded-3xl
-    shadow-xl
-    transition duration-300"
-        >
+          backdrop-blur-xl
+          border border-gray-200 dark:border-gray-800
+          p-8 rounded-3xl
+          shadow-xl
+          transition duration-300"
+              >
           <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
             Personal Information
           </h2>

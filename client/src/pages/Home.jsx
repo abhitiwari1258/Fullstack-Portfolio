@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getProjects } from "../services/ProjectApi";
 import ProjectCard from "../components/ProjectCard";
+import {FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 import {
   FaReact,
@@ -251,14 +252,56 @@ const Home = () => {
       </section>
 
       {/* 🔹 ABOUT */}
-      <section className="max-w-3xl mx-auto text-center">
-        <h2 className="text-2xl font-bold mb-4">About Me</h2>
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="
+        max-w-4xl mx-auto
+        text-center
+        py-20 px-6
+      "
+      >
+        <span
+          className="
+          inline-block
+          px-4 py-2 mb-6
+          rounded-full
+          bg-blue-100 dark:bg-blue-900/40
+          text-blue-600 dark:text-blue-400
+          text-sm font-medium
+        "
+        >
+          About Me
+        </span>
 
-        <p className="text-gray-600">
-          I'm a full-stack developer focused on building clean UI and scalable
-          backend systems.
+        <h2
+          className="
+          text-4xl md:text-5xl
+          font-bold
+          mb-8
+          leading-tight
+          text-gray-900 dark:text-white
+        "
+        >
+          Passionate Full Stack Developer Building Modern Web Experiences
+        </h2>
+
+        <p
+          className="
+          text-lg
+          leading-relaxed
+          text-gray-600 dark:text-gray-400
+          max-w-3xl mx-auto
+          "
+        >
+          I specialize in creating responsive frontends and scalable backend
+          systems using modern technologies like React, Node.js, Express,
+          MongoDB, and Tailwind CSS. I enjoy solving real-world problems,
+          optimizing performance, and building clean user experiences.
         </p>
-      </section>
+      </motion.section>
 
       {/* 🔹 CTA */}
       <section
@@ -281,7 +324,7 @@ const Home = () => {
 
         <div className="relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let’s Build Something Amazing 🚀
+            Let’s Build Something Amazing 
           </h2>
 
           <p className="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
@@ -307,6 +350,133 @@ const Home = () => {
           </button>
         </div>
       </section>
+
+      <footer
+        className="
+        mt-20
+        bg-white dark:bg-gray-950
+        border-t border-gray-200 dark:border-gray-800
+        transition duration-300
+      "
+      >
+        <div
+          className="
+          max-w-7xl mx-auto
+          px-6 py-12
+          grid md:grid-cols-3 gap-10
+        "
+        >
+          {/* LEFT */}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Abhishek.dev
+            </h2>
+
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Full Stack Developer passionate about building modern, scalable
+              and user-friendly web applications.
+            </p>
+          </div>
+
+          {/* QUICK LINKS */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Quick Links
+            </h3>
+
+            <div className="flex flex-col gap-3">
+              <a
+                href="/"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition"
+              >
+                Home
+              </a>
+
+              <a
+                href="/about"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition"
+              >
+                About
+              </a>
+
+              <a
+                href="/projects"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition"
+              >
+                Projects
+              </a>
+
+              <a
+                href="/contact"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+
+          {/* SOCIALS */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Connect
+            </h3>
+
+            <div className="flex gap-4">
+              <a
+                href="https://github.com/abhitiwari1258"
+                target="_blank"
+                className="
+                bg-gray-100 dark:bg-gray-800
+                p-3 rounded-full
+                text-gray-700 dark:text-white
+                hover:bg-blue-500 hover:text-white
+                transition duration-300">
+                <FaGithub />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/abhishek-tiwari-054bab34b/"
+                target="_blank"
+                className="
+            bg-gray-100 dark:bg-gray-800
+            p-3 rounded-full
+            text-gray-700 dark:text-white
+            hover:bg-blue-500 hover:text-white
+            transition duration-300
+          "
+              >
+                <FaLinkedin />
+              </a>
+
+              <a
+                href="abhishektiwari1258@email.com"
+                className="
+                bg-gray-100 dark:bg-gray-800
+                p-3 rounded-full
+                text-gray-700 dark:text-white
+                hover:bg-blue-500 hover:text-white
+                transition duration-300
+              "
+              >
+                <FaEnvelope />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* BOTTOM */}
+        <div
+          className="
+      border-t border-gray-200 dark:border-gray-800
+      py-5 text-center
+      text-gray-500 dark:text-gray-400
+      text-sm
+    "
+        >
+          © 2026 Abhishek.dev — All Rights Reserved.
+        </div>
+      </footer>
+
     </motion.div>
   );
 };
