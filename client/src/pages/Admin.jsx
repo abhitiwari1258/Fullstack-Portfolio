@@ -130,12 +130,25 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div
+      className="flex min-h-screen
+    bg-gray-100 dark:bg-black
+    text-gray-900 dark:text-white
+    transition duration-300"
+    >
       {/* 🔥 Sidebar */}
-      <div className="w-64 bg-white shadow-lg p-6 hidden md:block">
+      <div
+        className="w-64
+      bg-white dark:bg-gray-950
+      border-r border-gray-200 dark:border-gray-800
+      shadow-lg
+      p-6 hidden md:block
+      transition duration-300
+      "
+      >
         <h2 className="text-2xl font-bold text-blue-500 mb-8">Admin Panel</h2>
 
-        <nav className="flex flex-col gap-4 text-gray-700">
+        <nav className="flex flex-col gap-4 text-gray-400">
           {["dashboard", "projects", "contacts"].map((tab) => (
             <button
               key={tab}
@@ -143,7 +156,7 @@ const Admin = () => {
               className={`text-left px-4 py-2 rounded-lg transition ${
                 activeTab === tab
                   ? "bg-blue-500 text-white font-semibold"
-                  : "hover:bg-gray-200"
+                  : "hover:bg-gray-200 hover:text-black"
               }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -156,7 +169,9 @@ const Admin = () => {
       <div className="flex-1 p-6">
         {/* 🔥 Top Bar */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+            Admin Dashboard
+          </h1>
 
           <button
             onClick={handleLogout}
@@ -173,25 +188,39 @@ const Admin = () => {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-white p-5 rounded-xl shadow"
+                className="bg-white dark:bg-gray-900
+                border border-gray-200 dark:border-gray-800
+                p-6 rounded-2xl
+                shadow-lg
+                transition duration-300"
               >
-                <p className="text-gray-500">Total Messages</p>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Total Messages
+                </p>
                 <h2 className="text-3xl font-bold">{contacts.length}</h2>
               </motion.div>
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-white p-5 rounded-xl shadow"
+                className="bg-white dark:bg-gray-900
+                border border-gray-200 dark:border-gray-800
+                p-6 rounded-3xl
+                shadow-xl
+                transition duration-300"
               >
-                <p className="text-gray-500">Projects</p>
+                <p className="text-gray-500 dark:text-gray-400">Projects</p>
                 <h2 className="text-3xl font-bold">{projects.length}</h2>
               </motion.div>
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-white p-5 rounded-xl shadow"
+                className="bg-white dark:bg-gray-900
+                border border-gray-200 dark:border-gray-800
+                p-6 rounded-2xl
+                shadow-lg
+                transition duration-300"
               >
-                <p className="text-gray-500">Status</p>
+                <p className="text-gray-500 dark:text-gray-400">Status</p>
 
                 {loading ? (
                   <h2 className="text-gray-400">Loading...</h2>
@@ -218,9 +247,9 @@ const Admin = () => {
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-white p-2 rounded-2xl shadow"
+                className="bg-white p-2 rounded-2xl shadow dark:bg-gray-700"
               >
-                <h2 className="text-xl font-semibold mb-4 text-blue-600">
+                <h2 className="text-xl font-semibold mb-4 text-blue-600 ">
                   Add Project
                 </h2>
 
@@ -228,7 +257,14 @@ const Admin = () => {
                   <input
                     name="title"
                     placeholder="Project Title"
-                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    className="w-full
+                    bg-gray-50 dark:bg-gray-800
+                    border border-gray-300 dark:border-gray-700
+                    text-gray-900 dark:text-white
+                    p-4 rounded-2xl
+                    outline-none
+                    focus:ring-2 focus:ring-blue-500
+                    transition"
                     value={form.title}
                     onChange={handleChange}
                   />
@@ -238,7 +274,14 @@ const Admin = () => {
                     placeholder="Image URL"
                     value={form.image}
                     onChange={handleChange}
-                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    className="w-full
+                    bg-gray-50 dark:bg-gray-800
+                    border border-gray-300 dark:border-gray-700
+                    text-gray-900 dark:text-white
+                    p-4 rounded-2xl
+                    outline-none
+                    focus:ring-2 focus:ring-blue-500
+                    transition"
                   />
 
                   <input
@@ -246,7 +289,14 @@ const Admin = () => {
                     placeholder="GitHub Link"
                     value={form.githubLink}
                     onChange={handleChange}
-                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    className="w-full
+                    bg-gray-50 dark:bg-gray-800
+                    border border-gray-300 dark:border-gray-700
+                    text-gray-900 dark:text-white
+                    p-4 rounded-2xl
+                    outline-none
+                    focus:ring-2 focus:ring-blue-500
+                    transition"
                   />
 
                   <input
@@ -254,7 +304,14 @@ const Admin = () => {
                     placeholder="Live Link"
                     value={form.liveLink}
                     onChange={handleChange}
-                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    className="w-full
+                    bg-gray-50 dark:bg-gray-800
+                    border border-gray-300 dark:border-gray-700
+                    text-gray-900 dark:text-white
+                    p-4 rounded-2xl
+                    outline-none
+                    focus:ring-2 focus:ring-blue-500
+                    transition"
                   />
 
                   <input
@@ -262,13 +319,27 @@ const Admin = () => {
                     placeholder="Tech (React, Node, MongoDB)"
                     value={form.tech}
                     onChange={handleChange}
-                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    className="w-full
+                    bg-gray-50 dark:bg-gray-800
+                    border border-gray-300 dark:border-gray-700
+                    text-gray-900 dark:text-white
+                    p-4 rounded-2xl
+                    outline-none
+                    focus:ring-2 focus:ring-blue-500
+                    transition"
                   />
 
                   <textarea
                     name="description"
                     placeholder="Project Description"
-                    className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    className="w-full
+                  bg-gray-50 dark:bg-gray-800
+                  border border-gray-300 dark:border-gray-700
+                  text-gray-900 dark:text-white
+                  p-4 rounded-2xl
+                  outline-none
+                  focus:ring-2 focus:ring-blue-500
+                  transition"
                     value={form.description}
                     onChange={handleChange}
                   />
@@ -293,24 +364,32 @@ const Admin = () => {
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white p-6 rounded-2xl shadow"
+              className="bg-white p-6 rounded-2xl shadow dark:bg-gray-900"
             >
               <h2 className="text-xl font-semibold mb-4 text-purple-600">
                 Contact Messages
               </h2>
 
               {contacts.length === 0 ? (
-                <p className="text-gray-500">No messages found</p>
+                <p className="text-gray-500 dark:text-gray-400">
+                  No messages found
+                </p>
               ) : (
                 <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
                   {contacts.map((c) => (
                     <div
                       key={c._id}
-                      className="bg-gray-50 p-4 rounded-xl border"
+                      className="bg-gray-50 dark:bg-gray-800
+                      border border-gray-200 dark:border-gray-700
+                      p-5 rounded-2xl
+                      transition
+                    "
                     >
                       <h3 className="font-semibold">{c.name}</h3>
                       <p className="text-sm text-gray-500">{c.email}</p>
-                      <p className="mt-2 text-gray-700">{c.message}</p>
+                      <p className="mt-2 text-gray-700 dark:text-gray-300">
+                        {c.message}
+                      </p>
 
                       <button
                         onClick={() => handleDelete(c._id)}

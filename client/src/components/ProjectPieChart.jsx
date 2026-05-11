@@ -24,7 +24,7 @@ const ProjectPieChart = ({ projects }) => {
   }));
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow mx-4 my-6 -mt-0">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow mx-4 my-6 -mt-0">
       <h2 className="text-xl font-semibold mb-4">
         Projects Overview
       </h2>

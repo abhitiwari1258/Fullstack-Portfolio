@@ -22,15 +22,15 @@ const DashboardChart = ({ projects, contacts }) => {
   const COLORS = ["#3B82F6", "#8B5CF6"]; // blue + purple
 
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-6 ">
       {/* 🔵 BAR CHART */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition"
+        className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition  dark:bg-gray-800"
       >
-        <h2 className="text-lg font-semibold mb-4 text-gray-700">Comparison</h2>
+        <h2 className="text-lg font-semibold mb-4 text-gray-700 dark:text-white">Comparison</h2>
 
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={data}>
@@ -56,9 +56,9 @@ const DashboardChart = ({ projects, contacts }) => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition"
+        className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition  dark:bg-gray-800"
       >
-        <h2 className="text-lg font-semibold mb-4 text-gray-700">
+        <h2 className="text-lg font-semibold mb-4 text-gray-700 dark:text-white">
           Distribution
         </h2>
 
