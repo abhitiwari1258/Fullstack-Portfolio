@@ -12,43 +12,13 @@ Backend API: [Add backend deployment link] [Pending (work in progress)]
 
 ---
 
-# 📸 Screenshots
-
-## Home Page
-
-Add image:
-
-![Home Screenshot](./screenshots/home.png)
+# 🎥 Project Demo Videos
 
 ---
 
-## About Page
+## 📂 Projects Page Demo
 
-![About Screenshot](./screenshots/about.png)
-
----
-
-## Projects Page
-
-![Projects Screenshot](./screenshots/projects.png)
-
----
-
-## Contact Page
-
-![Contact Screenshot](./screenshots/contact.png)
-
----
-
-## Admin Dashboard
-
-![Admin Dashboard](./screenshots/admin.png)
-
----
-
-## Dark Mode
-
-![Dark Mode](./screenshots/darkmode.png)
+[![Watch Video](./screenshots/project-thumbnail.png)](https://youtu.be/6MkMS1JDpxk?feature=shared)
 
 ---
 
