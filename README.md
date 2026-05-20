@@ -16,9 +16,9 @@ Backend API: [Add backend deployment link] [Pending (work in progress)]
 
 ---
 
-## 📂 Projects Page Demo
+[![Watch Video](<img width="938" height="416" alt="Screenshot 2026-05-20 173248" src="https://github.com/user-attachments/assets/8d4005c4-1827-4e57-8005-0a4ec4d3347a" />)](https://youtu.be/6MkMS1JDpxk?feature=shared)
 
-[![Watch Video](./screenshots/project-thumbnail.png)](https://youtu.be/6MkMS1JDpxk?feature=shared)
+
 
 ---
 
