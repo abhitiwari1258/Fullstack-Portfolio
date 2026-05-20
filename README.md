@@ -6,9 +6,9 @@ A modern full-stack portfolio built using **React, Tailwind CSS, Node.js, Expres
 
 # 📌 Live Demo
 
-Frontend: [Add deployment link]
+Frontend: [Add deployment link]  [Pending (work in progress)]
 
-Backend API: [Add backend deployment link]
+Backend API: [Add backend deployment link] [Pending (work in progress)]
 
 ---
 
@@ -121,45 +121,6 @@ Implemented charts for:
 - Multer (if file upload)
 - REST APIs
 
----
-
-## Database
-
-MongoDB
-
-Collections:
-
-### Projects
-
-```js
-{
- title,
- description,
- image,
- githubLink,
- liveLink,
- tech
-}
-```
-
-### Contacts
-
-```js
-{
- name,
- email,
- message
-}
-```
-
-### Admin
-
-```js
-{
- email,
- password
-}
-```
 
 ---
 
@@ -410,75 +371,19 @@ Dark mode implementation
 
 ---
 
-# 🎤 Interview Explanation
-
-Explain project:
-
-> This is a full-stack portfolio website where users can view projects, skills, and contact information. I created an admin dashboard secured with JWT authentication to manage projects and contact messages dynamically. The application also includes analytics charts, dark mode, protected routes, and CRUD operations using MongoDB.
-
----
-
-# Common Interview Questions
-
-## Frontend
-
-Why React?
-
-Why Tailwind?
-
-Context API vs Redux?
-
-Dark mode implementation?
-
----
-
-## Backend
-
-How JWT works?
-
-Why Protected Routes?
-
-Explain REST APIs.
-
----
-
-## Database
-
-Why MongoDB?
-
-Difference between SQL and NoSQL?
-
----
-
-## Authentication
-
-How token validation works?
-
-Why localStorage?
-
----
-
-## Charts
-
-Why Recharts?
-
-How analytics data generated?
-
----
-
 # 👤 Author
 
 Abhishek Tiwari
 
-GitHub: [Add link]
+GitHub: [https://github.com/abhitiwari1258]
 
-LinkedIn: [Add link]
+LinkedIn: [https://www.linkedin.com/in/abhishek-tiwari-054bab34b/]
 
 Portfolio: [Add link]
 
 Leetcode: [Add link]
 
-Email: [Add email]
+Email: [abhishektiwari1258@gmail.com]
 
 ---
 
