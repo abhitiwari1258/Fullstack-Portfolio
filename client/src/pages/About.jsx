@@ -152,7 +152,7 @@ const About = () => {
             <img
               src={abhishek}
               alt="profile"
-              className="relative w-[350px] rounded-3xl shadow-2xl border-4 border-white"
+              className="relative w-[320px] h-[400px] rounded-3xl shadow-2xl border-4 border-white"
             />
           </div>
         </motion.div>
