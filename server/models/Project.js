@@ -10,12 +10,15 @@ const projSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        techStack: [String],
+        tech: {
+            type: [String],// IMPORTANT → array of strings
+            default: [],
+        },
         githubLink: String,
         liveLink: String,
-        image: String
+        image: String,
     },
     { timestamps: true }
 )
 
-export default mongoose.model("Project",projSchema)
+export default mongoose.model("Project", projSchema)
