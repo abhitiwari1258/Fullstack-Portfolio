@@ -54,6 +54,7 @@ const Projects = () => {
             <ProjectCard
               key={proj._id}
               _id={proj._id}
+              image={proj.image}
               title={proj.title}
               description={proj.description}
               githubLink={proj.githubLink}

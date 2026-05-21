@@ -7,21 +7,23 @@ import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
 import { getProjects } from "../services/ProjectApi";
+import { useRef } from "react";
 
 import DashboardChart from "../components/DashboardChart";
 import ProjectPieChart from "../components/ProjectPieChart";
 
 const Admin = () => {
+  const fileInputRef = useRef(null);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     title: "",
     description: "",
-    image: "",
     githubLink: "",
     liveLink: "",
     tech: "",
   });
 
+  const [image,setImage] = useState(null);
   const [contacts, setContacts] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,22 +56,35 @@ const Admin = () => {
     e.preventDefault();
 
     try {
-      const formattedData = {
-        ...form,
-        tech: form.tech.split(",").map((t) => t.trim()),
-      };
+      const formData = new FormData();
 
-      await createProject(formattedData);
+      formData.append("title", form.title);
+      formData.append("description", form.description);
+      formData.append("githubLink", form.githubLink);
+      formData.append("liveLink", form.liveLink);
+
+      formData.append(
+      "tech",
+      JSON.stringify(
+        form.tech.split(",").map((t) => t.trim())
+        )
+      );
+
+      formData.append("image", image);
+
+      await createProject(formData);
       toast.success("Project added 🚀");
       setForm({
         title: "",
         description: "",
-        image: "",
         githubLink: "",
         liveLink: "",
         tech: "",
       });
 
+      setImage(null);
+      fileInputRef.current.value = "";
+      
       fetchProjects();
     } catch (error) {
       toast.error("Failed to add project");
@@ -270,10 +285,10 @@ const Admin = () => {
                   />
 
                   <input
-                    name="image"
-                    placeholder="Image URL"
-                    value={form.image}
-                    onChange={handleChange}
+                    type="file"
+                    accept="image/*"
+                    ref={fileInputRef}
+                    onChange={(e)=>setImage(e.target.files[0])}
                     className="w-full
                     bg-gray-50 dark:bg-gray-800
                     border border-gray-300 dark:border-gray-700
