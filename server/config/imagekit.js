@@ -1,4 +1,7 @@
-import ImageKit from '@imagekit/nodejs'
+import ImageKit from 'imagekit'
+
+console.log("PRIVATE KEY:",
+process.env.IMAGEKIT_PRIVATE_KEY);
 
 const imagekit = new ImageKit({
     publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
