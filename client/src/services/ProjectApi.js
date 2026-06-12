@@ -1,8 +1,8 @@
-import axios from 'axios'
+import API from './api'
 
-const API = axios.create({
-    baseURL: "http://localhost:5000/api"
-})
+// const API = axios.create({
+//     baseURL: "http://localhost:5000/api"
+// })
 
 export const getProjects = ()=> API.get("/projects")
 export const createProject  = async (data)=> {

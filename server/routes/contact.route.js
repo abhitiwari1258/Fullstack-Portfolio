@@ -1,5 +1,7 @@
 import express from 'express'
 import Contact from '../models/contact.js';
+import authMiddleware from '../middleware/auth.middleware.js';
+
 const router = express.Router();
 
 router.post("/", async(req,res)=>{
@@ -32,7 +34,7 @@ router.get("/",async(req,res)=>{
   }
 })
 
-router.delete('/:id',async(req,res)=>{
+router.delete('/:id',authMiddleware,async(req,res)=>{
     try{
         await Contact.findByIdAndDelete(req.params.id)
 

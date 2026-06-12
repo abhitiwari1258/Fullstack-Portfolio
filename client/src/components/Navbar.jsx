@@ -10,7 +10,8 @@ import { FaMoon, FaSun } from "react-icons/fa";
 const Navbar = () => {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
-  const baseStyle = "px-4 py-2 rounded-lg transition-all duration-300 font-medium";
+  const baseStyle =
+    "px-4 py-2 rounded-lg transition-all duration-300 font-medium";
   const activeStyle = "bg-blue-500 text-white";
   const inactiveStyle =
     "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800";

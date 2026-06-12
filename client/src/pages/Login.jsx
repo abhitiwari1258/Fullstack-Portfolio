@@ -34,7 +34,7 @@ const Login = () => {
         navigate("/admin");
       }
     } catch (err) {
-      console.log("FULL ERROR:", err);
+      // console.log("FULL ERROR:", err);
       const message = err.response?.data?.msg || "Network / server error";
 
       toast.error(message);
