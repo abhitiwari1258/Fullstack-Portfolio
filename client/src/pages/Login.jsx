@@ -10,7 +10,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  console.log(form);
+  // console.log(form);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
