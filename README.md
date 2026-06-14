@@ -1,68 +1,79 @@
 # 🚀 Full Stack Portfolio Website
 
-A modern full-stack portfolio built using **React, Tailwind CSS, Node.js, Express, MongoDB** with an **Admin Dashboard**, **JWT Authentication**, **Dark Mode**, **Charts**, and **Project Management System**.
+A modern full-stack portfolio built using **React, Tailwind CSS, Node.js, Express, MongoDB**, featuring a secure **Admin Dashboard**, **JWT Authentication**, **Project Management System**, **Dark Mode**, **Analytics Dashboard**, and **Contact Management**.
 
 ---
 
 # 📌 Live Demo
 
-Frontend: [Add deployment link]  [Pending (work in progress)]
+Frontend: [Pending (Work in Progress)]
 
-Backend API: [Add backend deployment link] [Pending (work in progress)]
+Backend API: [Pending (Work in Progress)]
 
 ---
 
 # 🎥 Project Demo Videos
 
----
-
 [![Watch Video](https://github.com/user-attachments/assets/8d4005c4-1827-4e57-8005-0a4ec4d3347a)](https://youtu.be/6MkMS1JDpxk?feature=shared)
-
-
 
 ---
 
 # ✨ Features
 
-## User Features
+## 👨‍💻 User Features
 
-✔ Responsive Portfolio Website  
-✔ Dark / Light Theme Toggle  
-✔ About Section with Skills & Education  
-✔ Resume Download  
-✔ Social Media Links  
-✔ Projects Showcase  
-✔ Contact Form  
-✔ Introduction Section  
-✔ Smooth Animations using Framer Motion  
-
----
-
-## Admin Features
-
-Secure Admin Panel:
-
-✔ JWT Authentication  
-✔ Protected Routes  
-✔ Login System  
-✔ Add Projects  
-✔ Delete Projects  
-✔ View Contact Messages  
-✔ Delete Messages  
-✔ Charts & Analytics Dashboard  
-✔ Logout System  
+✔ Responsive Portfolio Website
+✔ Animated Hero Section
+✔ Dark / Light Theme Toggle
+✔ About Section
+✔ Skills Showcase
+✔ Education Section
+✔ Resume Download
+✔ Social Media Links
+✔ Projects Showcase
+✔ Contact Form
+✔ Framer Motion Animations
+✔ Mobile Responsive Design
 
 ---
 
-## Dashboard Analytics
+## 🔐 Authentication Features
 
-Implemented charts for:
+✔ Admin Login System
+✔ JWT Authentication
+✔ Protected Frontend Routes
+✔ Protected Backend Routes
+✔ JWT Verification Middleware
+✔ Axios Interceptors
+✔ Token Expiration Handling
+✔ Auto Logout on Session Expiry
+✔ Secure Logout Functionality
 
-- Contact trends
-- Projects distribution
-- Pie charts
-- Bar charts
-- Status cards
+---
+
+## 🛠 Admin Dashboard Features
+
+✔ Dashboard Overview
+✔ Total Projects Counter
+✔ Total Contact Messages Counter
+✔ Add New Projects
+✔ Upload Project Images
+✔ View All Projects
+✔ View Contact Messages
+✔ Delete Contact Messages
+✔ SweetAlert Confirmation Popups
+✔ Analytics Dashboard
+
+---
+
+## 📊 Analytics Dashboard
+
+Implemented using Recharts:
+
+✔ Project Distribution Pie Chart
+✔ Contact Analytics
+✔ Dashboard Statistics Cards
+✔ Responsive Charts
 
 ---
 
@@ -70,184 +81,142 @@ Implemented charts for:
 
 ## Frontend
 
-- React.js
-- Tailwind CSS
-- React Router DOM
-- Axios
-- Framer Motion
-- React Hot Toast
-- Recharts
-- SweetAlert2
-- Context API
+* React.js
+* Tailwind CSS
+* React Router DOM
+* Axios
+* Framer Motion
+* React Hot Toast
+* SweetAlert2
+* Recharts
+* Context API
+* JWT Decode
 
 ---
 
 ## Backend
 
-- Node.js
-- Express.js
-- JWT Authentication
-- bcrypt
-- Multer (if file upload)
-- REST APIs
-
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* Multer
+* REST APIs
+* CORS
+* dotenv
 
 ---
 
 # 🔐 Authentication Flow
 
-Login:
-
 Admin Login
 ↓
-Backend verifies credentials
+Credentials Verified
 ↓
-JWT token generated
+JWT Token Generated
 ↓
-Token stored in localStorage
+Stored in Local Storage
 ↓
-Protected Route checks token
+Axios Interceptor Attaches Token
 ↓
-Access Admin Dashboard
-
+Protected Route Verification
+↓
+Backend JWT Middleware Verification
+↓
+Admin Dashboard Access Granted
 
 ---
 
-# 🗂 Project Structure
+# 📂 Project Features
 
-```bash
+## Projects
+
+✔ Add Projects
+
+✔ Delete Projects
+
+✔ Project Images
+
+✔ GitHub Links
+
+✔ Live Demo Links
+
+✔ Tech Stack Tags
+
+✔ Dynamic Project Rendering
+
+---
+
+## Contact System
+
+✔ Contact Form Submission
+
+✔ Store Messages in MongoDB
+
+✔ View Messages in Admin Dashboard
+
+✔ Delete Messages
+
+✔ Contact Analytics
+
+---
+
+# 🗂 Folder Structure
+
 portfolio/
-│
+
 ├── client/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── context/
-│   ├── assets/
-│   └── App.jsx
+
+│ ├── components/
+
+│ ├── pages/
+
+│ ├── services/
+
+│ ├── utils/
+
+│ ├── context/
+
+│ ├── assets/
+
+│ └── App.jsx
+
 │
+
 ├── server/
-│   ├── routes/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── config/
-│   └── server.js
-```
+
+│ ├── controllers/
+
+│ ├── routes/
+
+│ ├── middleware/
+
+│ ├── models/
+
+│ ├── uploads/
+
+│ ├── config/
+
+│ └── server.js
 
 ---
 
-# ⚙ Installation
+# 🔒 Security Features
 
-Clone repository:
+✔ JWT Authentication
 
-```bash
-git clone YOUR_REPO_URL
-```
+✔ Route Protection
 
-Install frontend:
+✔ Backend Middleware Verification
 
-```bash
-cd client
-npm install
-npm run dev
-```
+✔ Token Expiration Checks
 
-Install backend:
+✔ Auto Logout
 
-```bash
-cd server
-npm install
-npm run server
-```
+✔ Protected API Endpoints
 
----
-
-# Environment Variables
-
-Backend `.env`
-
-```env
-PORT=5000
-
-MONGO_URI=
-
-JWT_SECRET=
-
-ADMIN_EMAIL=
-
-ADMIN_PASSWORD=
-```
-
----
-
-# API Routes
-
-Authentication:
-
-```bash
-POST /api/auth/login
-```
-
-Projects:
-
-```bash
-GET /api/projects
-
-POST /api/projects
-
-DELETE /api/projects/:id
-```
-
-Contacts:
-
-```bash
-POST /api/contact
-
-GET /api/contact
-
-DELETE /api/contact/:id
-```
-
----
-
-# 🌙 Dark Mode
-
-Implemented using:
-
-Context API
-
-localStorage
-
-Tailwind Dark Classes
-
-Features:
-
-Persist theme after refresh
-
-Global dark mode
-
-Admin dark mode
-
-Responsive UI
-
----
-
-# 📊 Charts Used
-
-Dashboard contains:
-
-Pie Chart
-
-Bar Chart
-
-Project Analytics
-
-Contact Analytics
-
-Built using:
-
-Recharts
+✔ Environment Variables
 
 ---
 
@@ -255,13 +224,13 @@ Recharts
 
 Supports:
 
-Desktop
+✔ Desktop
 
-Tablet
+✔ Tablet
 
-Mobile
+✔ Mobile
 
-Admin Dashboard Responsive Layout
+✔ Responsive Admin Dashboard
 
 ---
 
@@ -269,75 +238,45 @@ Admin Dashboard Responsive Layout
 
 Frontend:
 
-Vercel / Netlify
+* Vercel
 
 Backend:
 
-Render / Railway
+* Render
 
 Database:
 
-MongoDB Atlas
-
----
-
-# Future Improvements
-
-Planned features:
-
-[ ] Introduction video upload
-
-[ ] Blog system
-
-[ ] Cloudinary integration
-
-[ ] Admin image upload
-
-[ ] Search projects
-
-[ ] Pagination
-
-[ ] Email notifications
-
-[ ] Resume analytics
-
-[ ] Project categories
+* MongoDB Atlas
 
 ---
 
 # 💡 Challenges Faced
 
-Implementing JWT Authentication
-
-Protected Routes
-
-Dark Mode persistence
-
-Admin Dashboard state handling
-
-Charts integration
-
-MongoDB CRUD operations
+* JWT Authentication Implementation
+* Protected Routes
+* Backend Authorization
+* Auto Logout System
+* Token Expiration Handling
+* Dashboard Analytics
+* MongoDB CRUD Operations
+* Responsive Dashboard Design
+* Image Upload Handling
 
 ---
 
 # 📖 What I Learned
 
-Building full-stack applications
-
-Authentication systems
-
-REST APIs
-
-MongoDB integration
-
-State management
-
-Charts and analytics
-
-Responsive UI
-
-Dark mode implementation
+* Full Stack Application Development
+* JWT Authentication
+* REST API Development
+* Backend Security
+* MongoDB Integration
+* State Management
+* Protected Routes
+* Axios Interceptors
+* Dashboard Analytics
+* Responsive UI Design
+* Authentication Best Practices
 
 ---
 
@@ -345,15 +284,14 @@ Dark mode implementation
 
 Abhishek Tiwari
 
-GitHub: [https://github.com/abhitiwari1258]
+GitHub:
+https://github.com/abhitiwari1258
 
-LinkedIn: [https://www.linkedin.com/in/abhishek-tiwari-054bab34b/]
+LinkedIn:
+https://www.linkedin.com/in/abhishek-tiwari-054bab34b/
 
-Portfolio: [Add link]
-
-Leetcode: [Add link]
-
-Email: [abhishektiwari1258@gmail.com]
+Email:
+[abhishektiwari1258@gmail.com](mailto:abhishektiwari1258@gmail.com)
 
 ---
 
