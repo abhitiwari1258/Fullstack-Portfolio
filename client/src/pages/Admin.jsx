@@ -11,7 +11,7 @@ import { useRef } from "react";
 
 import DashboardChart from "../components/DashboardChart";
 import ProjectPieChart from "../components/ProjectPieChart";
-
+import { jwtDecode } from "jwt-decode";
 const Admin = () => {
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
@@ -23,12 +23,36 @@ const Admin = () => {
     tech: "",
   });
 
-  const [image,setImage] = useState(null);
+  const [image, setImage] = useState(null);
   const [contacts, setContacts] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [activeTab, setActiveTab] = useState("dashboard");
+  
+  // autoLogout
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    const decoded = jwtDecode(token);
+
+    const expiryTime = decoded.exp * 1000;
+    const currentTime = Date.now();
+
+    const remainingTime = expiryTime - currentTime;
+
+    const timer = setTimeout(() => {
+      localStorage.removeItem("token");
+
+      toast.error("Session expired. Please login again");
+
+      navigate("/login");
+    }, remainingTime);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   const fetchContact = async () => {
     try {
@@ -64,10 +88,8 @@ const Admin = () => {
       formData.append("liveLink", form.liveLink);
 
       formData.append(
-      "tech",
-      JSON.stringify(
-        form.tech.split(",").map((t) => t.trim())
-        )
+        "tech",
+        JSON.stringify(form.tech.split(",").map((t) => t.trim())),
       );
 
       formData.append("image", image);
@@ -84,7 +106,7 @@ const Admin = () => {
 
       setImage(null);
       fileInputRef.current.value = "";
-      
+
       fetchProjects();
     } catch (error) {
       toast.error("Failed to add project");
@@ -288,7 +310,7 @@ const Admin = () => {
                     type="file"
                     accept="image/*"
                     ref={fileInputRef}
-                    onChange={(e)=>setImage(e.target.files[0])}
+                    onChange={(e) => setImage(e.target.files[0])}
                     className="w-full
                     bg-gray-50 dark:bg-gray-800
                     border border-gray-300 dark:border-gray-700
