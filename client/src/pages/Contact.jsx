@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast"
-
+import API from "../services/api"
 const Contact = () => {
   const [form,setForm] = useState({
     name:'',
@@ -17,7 +17,7 @@ const Contact = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try{
-      await axios.post("http://localhost:5000/api/contact",form)
+      await API.post("/api/contact",form)
 
       toast.success("Message sent successfully 👍")
       setForm({name:"" ,email: "",message: "" })
