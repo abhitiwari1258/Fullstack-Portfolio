@@ -48,7 +48,7 @@ const Admin = () => {
 
       toast.error("Session expired. Please login again");
 
-      navigate("/login");
+      navigate("/");
     }, remainingTime);
 
     return () => clearTimeout(timer);

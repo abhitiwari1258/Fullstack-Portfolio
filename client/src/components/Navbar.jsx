@@ -2,12 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 // import { useTheme } from "../context/ThemeContext";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const baseStyle =
@@ -26,12 +27,12 @@ const Navbar = () => {
     transition-all duration-300
   "
     >
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+      <div className="max-w-6xl mx-auto flex justify-between items-center px-4 md:px-6 py-4">
         <h2 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
           Abhishek.dev
         </h2>
 
-        <div className="flex gap-2">
+        <div className="hidden md:flex gap-2">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -78,11 +79,42 @@ const Navbar = () => {
           </NavLink>
         </div>
 
+        {menuOpen && (
+          <div className="md:hidden flex flex-col gap-2 px-4 pb-4">
+            <NavLink to="/" onClick={() => setMenuOpen(false)}>
+              Home
+            </NavLink>
+
+            <NavLink to="/about" onClick={() => setMenuOpen(false)}>
+              About
+            </NavLink>
+
+            <NavLink to="/projects" onClick={() => setMenuOpen(false)}>
+              Projects
+            </NavLink>
+
+            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </NavLink>
+
+            <NavLink to="/login" onClick={() => setMenuOpen(false)}>
+              Login
+            </NavLink>
+          </div>
+        )}
+
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-2xl"
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
         <button
           onClick={toggleTheme}
           className="bg-gray-200 dark:bg-gray-800
-  text-gray-700 dark:text-white p-3 rounded-full
-hover:scale-110 hover:rotate-12 shadow-md transition duration-300"
+          text-gray-700 dark:text-white p-3 rounded-full
+        hover:scale-110 hover:rotate-12 shadow-md transition duration-300"
         >
           {darkMode ? <FaSun /> : <FaMoon />}
         </button>

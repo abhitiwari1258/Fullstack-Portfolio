@@ -60,11 +60,11 @@ const Home = () => {
     >
       {/* hero */}
       <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
           Hi, I'm <span className="text-blue-500">Abhishek</span> 👋
         </h1>
 
-        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mb-8">
+        <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mb-8 px-4">
           I build scalable and modern web applications using{" "}
           <span className="font-medium text-gray-800">
             React, Node.js, and MongoDB
