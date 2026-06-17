@@ -285,7 +285,7 @@ const Admin = () => {
         )}
 
         {/* 🔥 Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="w-full">
           {/* ========== PROJECT FORM ========= */}
 
           {activeTab === "projects" && (
@@ -410,7 +410,7 @@ const Admin = () => {
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white p-6 rounded-2xl shadow dark:bg-gray-900"
+              className="bg-white p-6 rounded-2xl shadow dark:bg-gray-900  w-full max-w-6xl"
             >
               <h2 className="text-xl font-semibold mb-4 text-purple-600">
                 Contact Messages
@@ -421,13 +421,15 @@ const Admin = () => {
                   No messages found
                 </p>
               ) : (
-                <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                <div className="space-y-5 w-full ">
                   {contacts.map((c) => (
                     <div
                       key={c._id}
                       className="bg-gray-50 dark:bg-gray-800
                       border border-gray-200 dark:border-gray-700
-                      p-5 rounded-2xl
+                      w-full
+                      p-6
+                      rounded-3xl
                       transition
                     "
                     >

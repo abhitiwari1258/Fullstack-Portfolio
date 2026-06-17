@@ -146,7 +146,7 @@ const About = () => {
 
           {/* BUTTON */}
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1amnMEd3FTuRdWAM_nq3blzw-dXevlOhm/view?usp=sharing"
             download
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-7 py-3 rounded-xl font-medium shadow-lg hover:scale-105 transition duration-300"
           >
