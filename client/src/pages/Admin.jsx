@@ -29,7 +29,7 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
 
   const [activeTab, setActiveTab] = useState("dashboard");
-  
+
   // autoLogout
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -168,29 +168,34 @@ const Admin = () => {
 
   return (
     <div
-      className="flex min-h-screen
+      className="flex flex-col md:flex-row min-h-screen
     bg-gray-100 dark:bg-black
     text-gray-900 dark:text-white
     transition duration-300"
     >
       {/* 🔥 Sidebar */}
       <div
-        className="w-64
+        className="w-full md:w-64
       bg-white dark:bg-gray-950
       border-r border-gray-200 dark:border-gray-800
       shadow-lg
-      p-6 hidden md:block
+      p-4 md:p-6
       transition duration-300
       "
       >
         <h2 className="text-2xl font-bold text-blue-500 mb-8">Admin Panel</h2>
 
-        <nav className="flex flex-col gap-4 text-gray-400">
+        <nav className="flex md:flex-col
+        gap-2
+        overflow-x-auto
+        text-gray-400">
           {["dashboard", "projects", "contacts"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`text-left px-4 py-2 rounded-lg transition ${
+              className={`w-full md:w-auto
+              text-center md:text-left
+              px-4 py-3 rounded-lg transition ${
                 activeTab === tab
                   ? "bg-blue-500 text-white font-semibold"
                   : "hover:bg-gray-200 hover:text-black"
@@ -205,7 +210,11 @@ const Admin = () => {
       {/* 🔥 Main Content */}
       <div className="flex-1 p-6">
         {/* 🔥 Top Bar */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex flex-col sm:flex-row
+        justify-between
+        items-start sm:items-center
+        gap-4
+        mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
             Admin Dashboard
           </h1>
@@ -276,15 +285,15 @@ const Admin = () => {
         )}
 
         {/* 🔥 Grid Layout */}
-        <div className="grid md:grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* ========== PROJECT FORM ========= */}
 
           {activeTab === "projects" && (
-            <div className="space-y-6 grid-cols-2 grid ">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 ">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-white p-2 rounded-2xl shadow dark:bg-gray-700"
+                className="bg-white p-4 sm:p-6 rounded-2xl shadow dark:bg-gray-700"
               >
                 <h2 className="text-xl font-semibold mb-4 text-blue-600 ">
                   Add Project

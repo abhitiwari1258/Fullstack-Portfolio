@@ -29,6 +29,8 @@ import {
 import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import abhishek from "../assets/abhishek.png";
+import { getProjects } from "../services/ProjectApi";
+import { useEffect,useState } from "react";
 
 const skills = [
   {
@@ -74,6 +76,20 @@ const skills = [
 ];
 
 const About = () => {
+  const [projectCount, setProjectCount] = useState(0);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        const res = await getProjects();
+
+        setProjectCount(res.data.length);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProject();
+  },[]);
   return (
     <div className="space-y-24">
       {/* HERO SECTION */}
@@ -171,7 +187,7 @@ const About = () => {
           p-8 rounded-3xl
           shadow-xl
           transition duration-300"
-              >
+        >
           <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
             Personal Information
           </h2>
@@ -185,16 +201,12 @@ const About = () => {
               abhishektiwari1258@gmail.com
             </p>
 
-            <p
-              className="flex items-center gap-4 text-gray-700 dark:text-gray-300"
-            >
+            <p className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
               <FaPhone className="text-green-500 text-xl" />
               +91 6283157291
             </p>
 
-            <p
-              className="flex items-center gap-4 text-gray-700 dark:text-gray-300"
-            >
+            <p className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
               <FaMapMarkerAlt className="text-red-500 text-xl" />
               Ghaziabad,UP,India
             </p>
@@ -210,9 +222,7 @@ const About = () => {
         >
           <h2 className="text-2xl font-bold mb-6">Education</h2>
 
-          <div
-            className="relative border-l-4 border-blue-500 pl-8 py-2 space-y-10"
-          >
+          <div className="relative border-l-4 border-blue-500 pl-8 py-2 space-y-10">
             <div className="mb-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
                 B.Tech - Computer Science and Engineering
@@ -262,7 +272,7 @@ const About = () => {
       {/* STATS */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {[
-          { value: "10+", label: "Projects" },
+          { value: `${projectCount}+`, label: "Projects" },
           { value: "1+", label: "Years Learning" },
           { value: "8+", label: "Technologies" },
         ].map((item, index) => (

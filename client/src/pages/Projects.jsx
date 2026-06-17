@@ -32,12 +32,12 @@ const Projects = () => {
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.5 }}
-  className="space-y-12"
+  className="space-y-12 px-4 sm:px-0"
 >
       {/* Heading */}
       <div className="text-center mb-14">
-        <h1 className="text-5xl font-bold mb-4 text-gray-900 dark:text-white">My Projects</h1>
-        <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">My Projects</h1>
+        <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-4">
           A collection of my recent work and real-world builds
         </p>
       </div>
@@ -49,7 +49,7 @@ const Projects = () => {
         </div>
       ) : (
 
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((proj) => (
             <ProjectCard
               key={proj._id}

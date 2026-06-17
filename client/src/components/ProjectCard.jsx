@@ -30,7 +30,7 @@ const ProjectCard = ({
       className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full hover:-translate-y-2"
     >
       {/* Image */}
-      <div className="h-40 w-full overflow-hidden relative">
+      <div className="h-44 sm:h-48 w-full overflow-hidden relative">
         <img
           src={image}
           alt={title}
@@ -60,7 +60,7 @@ const ProjectCard = ({
                 key={i}
                 className="bg-blue-100 dark:bg-blue-500/20
                 text-blue-700 dark:text-blue-300
-                text-xs font-medium
+                text-xs sm:text-sm font-medium
                 px-3 py-1 rounded-full
                 border border-blue-200 dark:border-blue-500/30"
               >
@@ -71,7 +71,7 @@ const ProjectCard = ({
         )}
 
         {/* Buttons */}
-        <div className="flex items-center gap-3 mt-auto">
+        <div className="flex flex-wrap items-center gap-3 mt-auto">
           <a
             href={liveLink}
             target="_blank"
@@ -113,7 +113,7 @@ const ProjectCard = ({
               className="ml-auto
               text-red-500
               text-sm font-medium
-              opacity-0 group-hover:opacity-100
+              opacity-100 md:opacity-0 md:group-hover:opacity-100
               hover:text-red-600
               transition duration-300"
             >
