@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { deleteProject } from "../services/projectApi";
+import { deleteProject } from "../services/ProjectApi";
 
 const ProjectCard = ({
   _id,
