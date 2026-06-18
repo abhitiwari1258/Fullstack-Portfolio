@@ -6,9 +6,9 @@ A modern full-stack portfolio built using **React, Tailwind CSS, Node.js, Expres
 
 # 📌 Live Demo
 
-Frontend: [Pending (Work in Progress)]
+Frontend: [https://fullstack-portfolio-zqc5.vercel.app/]
 
-Backend API: [Pending (Work in Progress)]
+Backend API: [https://fullstack-portfolio-w6ai.onrender.com/]
 
 ---
 
